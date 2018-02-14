@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+
+Podfile.lock
+Pods/
+
+user_monitoring_test_app.xcworkspace/
+
