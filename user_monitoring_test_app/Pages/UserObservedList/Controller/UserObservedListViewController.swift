@@ -20,6 +20,8 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        navigationItem.title = currentUser
     }
 
     /*

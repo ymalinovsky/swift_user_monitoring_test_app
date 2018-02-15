@@ -14,7 +14,7 @@ class AddUserToObserve {
         var usersObserveList = [MonitoringUser]()
         
         fullUsersList.forEach { (user) in
-            if !observedUsersListByCurrentUser.contains(where: { $0.userID == user.userID }) {
+            if !observedUsersListByCurrentUser.contains(where: { $0.userID == user.userID }) && user.userID != currentUser {
                 usersObserveList.append(user)
             }
         }
