@@ -14,6 +14,7 @@
 		9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407F72035CDD60040D3E2 /* SignInViewController.swift */; };
 		9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */; };
 		9E4407FE2035E47C0040D3E2 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FD2035E47C0040D3E2 /* FirebaseDatabase.swift */; };
+		9E4408022035F6B70040D3E2 /* AddUserToObserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4408012035F6B70040D3E2 /* AddUserToObserveViewController.swift */; };
 		9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49654E203451D300C138B2 /* AppDelegate.swift */; };
 		9E496554203451D300C138B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E496552203451D300C138B2 /* Main.storyboard */; };
 		9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E496555203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld */; };
@@ -57,6 +58,7 @@
 		9E4407F72035CDD60040D3E2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E4407FD2035E47C0040D3E2 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
+		9E4408012035F6B70040D3E2 /* AddUserToObserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserToObserveViewController.swift; sourceTree = "<group>"; };
 		9E49654B203451D300C138B2 /* user_monitoring_test_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = user_monitoring_test_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E49654E203451D300C138B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E496553203451D300C138B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -162,6 +164,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		9E4407FF2035F2DF0040D3E2 /* AddUserToObserve */ = {
+			isa = PBXGroup;
+			children = (
+				9E4408002035F2ED0040D3E2 /* Controller */,
+			);
+			path = AddUserToObserve;
+			sourceTree = "<group>";
+		};
+		9E4408002035F2ED0040D3E2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E4408012035F6B70040D3E2 /* AddUserToObserveViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		9E496542203451D300C138B2 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +240,7 @@
 		9E7D3D082035A1B1006102C6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				9E4407FF2035F2DF0040D3E2 /* AddUserToObserve */,
 				9E4407F82035CDD60040D3E2 /* Login */,
 				9E4407F52035CDD60040D3E2 /* SignIn */,
 				9E7D3D0D2035ABB2006102C6 /* UserObservedList */,
@@ -592,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */,
+				9E4408022035F6B70040D3E2 /* AddUserToObserveViewController.swift in Sources */,
 				9E7D3D192035BF86006102C6 /* FirebaseAuth.swift in Sources */,
 				9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */,
 				9E7D3D0C2035A269006102C6 /* GoogleMapsViewController.swift in Sources */,
