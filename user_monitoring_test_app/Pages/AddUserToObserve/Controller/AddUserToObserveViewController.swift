@@ -12,7 +12,7 @@ class AddUserToObserveViewController: UIViewController, UITableViewDelegate, UIT
 
     @IBOutlet weak var tableView: UITableView!
     
-    var usersListToObserve = [MonitoringUser]()
+    var usersListToObserve: [MonitoringUser]!
     
     let usersListToObserveCellIdentifier = "usersListToObserveCell"
     

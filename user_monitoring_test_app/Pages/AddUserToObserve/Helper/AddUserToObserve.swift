@@ -11,8 +11,14 @@ import Foundation
 class AddUserToObserve {
     
     func getUsersObserveList() -> [MonitoringUser] {
+        var usersObserveList = [MonitoringUser]()
         
+        fullUsersList.forEach { (user) in
+            if !observedUsersListByCurrentUser.contains(where: { $0.userID == user.userID }) {
+                usersObserveList.append(user)
+            }
+        }
         
-        return [MonitoringUser]()
+        return usersObserveList
     }
 }

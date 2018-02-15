@@ -14,7 +14,10 @@ class FirebaseObserve {
         let chatDB = Database.database().reference().child("users")
         chatDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
-            fullUsersList.append(MonitoringUser(userID: String(describing: userData["id"])))
+            
+            let userID = userData["id"] as! String
+            
+            fullUsersList.append(MonitoringUser(userID: userID))
         })
     }
     
