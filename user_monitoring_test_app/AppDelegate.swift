@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import GoogleMaps
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyCeygKy2GbL_knck_jdeaYAD4AOmC1mdhQ")
+        
+        FirebaseApp.configure()
         
         return true
     }

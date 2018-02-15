@@ -10,6 +10,9 @@
 		2503752A5538B4705319A6E6 /* Pods_user_monitoring_test_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FF26F2466BA3C6C598BE7E /* Pods_user_monitoring_test_appUITests.framework */; };
 		40B3907BA7E151437276A9FD /* Pods_user_monitoring_test_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6552065E12E78E59461773E4 /* Pods_user_monitoring_test_app.framework */; };
 		854DB7CC465953EB613C364B /* Pods_user_monitoring_test_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0888C0B809C860F43CA9A413 /* Pods_user_monitoring_test_appTests.framework */; };
+		9E20C0992035C2F90025762E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E20C0982035C2F90025762E /* GoogleService-Info.plist */; };
+		9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407F72035CDD60040D3E2 /* SignInViewController.swift */; };
+		9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */; };
 		9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49654E203451D300C138B2 /* AppDelegate.swift */; };
 		9E496554203451D300C138B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E496552203451D300C138B2 /* Main.storyboard */; };
 		9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E496555203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld */; };
@@ -21,7 +24,7 @@
 		9E7D3D102035AC03006102C6 /* UserObservedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D3D0F2035AC03006102C6 /* UserObservedListViewController.swift */; };
 		9E7D3D132035AE11006102C6 /* MonitoringUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D3D122035AE11006102C6 /* MonitoringUser.swift */; };
 		9E7D3D152035BC55006102C6 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D3D142035BC55006102C6 /* App.swift */; };
-		9E7D3D192035BF86006102C6 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D3D182035BF86006102C6 /* Firebase.swift */; };
+		9E7D3D192035BF86006102C6 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D3D182035BF86006102C6 /* FirebaseAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		4555E9939DC09F493E3C39AA /* Pods-user_monitoring_test_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-user_monitoring_test_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-user_monitoring_test_appTests/Pods-user_monitoring_test_appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F62F9481418D87237FC19A1 /* Pods-user_monitoring_test_appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-user_monitoring_test_appUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-user_monitoring_test_appUITests/Pods-user_monitoring_test_appUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6552065E12E78E59461773E4 /* Pods_user_monitoring_test_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_user_monitoring_test_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E20C0982035C2F90025762E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E4407F72035CDD60040D3E2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E49654B203451D300C138B2 /* user_monitoring_test_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = user_monitoring_test_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E49654E203451D300C138B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E496553203451D300C138B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,7 +72,7 @@
 		9E7D3D0F2035AC03006102C6 /* UserObservedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservedListViewController.swift; sourceTree = "<group>"; };
 		9E7D3D122035AE11006102C6 /* MonitoringUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringUser.swift; sourceTree = "<group>"; };
 		9E7D3D142035BC55006102C6 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		9E7D3D182035BF86006102C6 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		9E7D3D182035BF86006102C6 /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		A0FF26F2466BA3C6C598BE7E /* Pods_user_monitoring_test_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_user_monitoring_test_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09863B4D5DE145F434368C9 /* Pods-user_monitoring_test_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-user_monitoring_test_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-user_monitoring_test_appTests/Pods-user_monitoring_test_appTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +128,38 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9E4407F52035CDD60040D3E2 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				9E4407F62035CDD60040D3E2 /* Controller */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		9E4407F62035CDD60040D3E2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E4407F72035CDD60040D3E2 /* SignInViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9E4407F82035CDD60040D3E2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9E4407F92035CDD60040D3E2 /* Controller */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9E4407F92035CDD60040D3E2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		9E496542203451D300C138B2 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +193,7 @@
 				9E496558203451D300C138B2 /* Assets.xcassets */,
 				9E49655A203451D300C138B2 /* LaunchScreen.storyboard */,
 				9E49655D203451D300C138B2 /* Info.plist */,
+				9E20C0982035C2F90025762E /* GoogleService-Info.plist */,
 				9E496555203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld */,
 			);
 			path = user_monitoring_test_app;
@@ -181,6 +220,8 @@
 		9E7D3D082035A1B1006102C6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				9E4407F82035CDD60040D3E2 /* Login */,
+				9E4407F52035CDD60040D3E2 /* SignIn */,
 				9E7D3D0D2035ABB2006102C6 /* UserObservedList */,
 				9E7D3D092035A1D4006102C6 /* GoogleMaps */,
 			);
@@ -239,7 +280,7 @@
 		9E7D3D172035BF56006102C6 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				9E7D3D182035BF86006102C6 /* Firebase.swift */,
+				9E7D3D182035BF86006102C6 /* FirebaseAuth.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -361,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E49655C203451D300C138B2 /* LaunchScreen.storyboard in Resources */,
+				9E20C0992035C2F90025762E /* GoogleService-Info.plist in Resources */,
 				9E496559203451D300C138B2 /* Assets.xcassets in Resources */,
 				9E496554203451D300C138B2 /* Main.storyboard in Resources */,
 			);
@@ -455,9 +497,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-user_monitoring_test_app/Pods-user_monitoring_test_app-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -537,10 +588,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E7D3D192035BF86006102C6 /* Firebase.swift in Sources */,
+				9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */,
+				9E7D3D192035BF86006102C6 /* FirebaseAuth.swift in Sources */,
 				9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */,
 				9E7D3D0C2035A269006102C6 /* GoogleMapsViewController.swift in Sources */,
 				9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */,
+				9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */,
 				9E7D3D152035BC55006102C6 /* App.swift in Sources */,
 				9E7D3D132035AE11006102C6 /* MonitoringUser.swift in Sources */,
 				9E7D3D102035AC03006102C6 /* UserObservedListViewController.swift in Sources */,

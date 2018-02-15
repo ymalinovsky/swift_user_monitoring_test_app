@@ -6,6 +6,9 @@ target 'user_monitoring_test_app' do
   use_frameworks!
 
     pod 'GoogleMaps', '~> 2.6'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
 
   target 'user_monitoring_test_appTests' do
     inherit! :search_paths

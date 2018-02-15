@@ -8,7 +8,10 @@
 
 import Foundation
 
+let firebaseAuth = FirebaseAuth()
+
 var fullUsersList = [MonitoringUser]()
 var observedUsersListByCurrentUser = [MonitoringUser]()
 var usersListWhoMonitoringCurrentUser = [MonitoringUser]()
 
+var currentUser = String()
