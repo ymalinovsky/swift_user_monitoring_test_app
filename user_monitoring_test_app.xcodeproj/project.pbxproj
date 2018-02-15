@@ -13,6 +13,7 @@
 		9E20C0992035C2F90025762E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E20C0982035C2F90025762E /* GoogleService-Info.plist */; };
 		9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407F72035CDD60040D3E2 /* SignInViewController.swift */; };
 		9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */; };
+		9E4407FE2035E47C0040D3E2 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FD2035E47C0040D3E2 /* FirebaseDatabase.swift */; };
 		9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49654E203451D300C138B2 /* AppDelegate.swift */; };
 		9E496554203451D300C138B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E496552203451D300C138B2 /* Main.storyboard */; };
 		9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E496555203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld */; };
@@ -55,6 +56,7 @@
 		9E20C0982035C2F90025762E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E4407F72035CDD60040D3E2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9E4407FD2035E47C0040D3E2 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
 		9E49654B203451D300C138B2 /* user_monitoring_test_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = user_monitoring_test_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E49654E203451D300C138B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E496553203451D300C138B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				9E7D3D182035BF86006102C6 /* FirebaseAuth.swift */,
+				9E4407FD2035E47C0040D3E2 /* FirebaseDatabase.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */,
 				9E7D3D0C2035A269006102C6 /* GoogleMapsViewController.swift in Sources */,
 				9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */,
+				9E4407FE2035E47C0040D3E2 /* FirebaseDatabase.swift in Sources */,
 				9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */,
 				9E7D3D152035BC55006102C6 /* App.swift in Sources */,
 				9E7D3D132035AE11006102C6 /* MonitoringUser.swift in Sources */,

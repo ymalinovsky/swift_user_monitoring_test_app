@@ -21,10 +21,15 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginSuccess(notification: NSNotification) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let chatsNC = storyboard.instantiateViewController(withIdentifier: "userObservedListNavigationController")
-        
-        present(chatsNC, animated: true)
+        if let topVC = UIApplication.topViewController() {
+            let topVCName = NSStringFromClass(topVC.classForCoder).components(separatedBy: ".").last!
+            if topVCName == "LoginViewController" {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let chatsNC = storyboard.instantiateViewController(withIdentifier: "userObservedListNavigationController")
+                
+                present(chatsNC, animated: true)
+            }
+        }
     }
 
     @IBAction func LoginButtonAction(_ sender: UIButton) {

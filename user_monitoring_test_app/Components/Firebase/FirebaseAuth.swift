@@ -16,9 +16,9 @@ class FirebaseAuth {
                 print(error!)
             }
             else {
-//                self.addNewUser(userID: email)
-                
+                firebaseDatabase.addNewUser(userID: email)
                 currentUser = email
+                
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
             }
         })
@@ -30,9 +30,9 @@ class FirebaseAuth {
                 print(error!)
             }
             else {
-//                self.addNewUser(userID: email)
-                
+                firebaseDatabase.addNewUser(userID: email)
                 currentUser = email
+                
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
             }
         })
