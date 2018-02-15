@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+struct App {
+    static let currentUserKeyForUserDefaults = "currentUserKey"
+    static let currentUserPasswordKeyForUserDefaults = "currentUserPasswordKey"
+}
+
 let firebaseAuth = FirebaseAuth()
 let firebaseDatabase = FirebaseDatabase()
 let firebaseObserve = FirebaseObserve()

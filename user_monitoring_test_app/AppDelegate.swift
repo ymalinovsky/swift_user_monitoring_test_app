@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         firebaseObserve.newUserObserver()
         
+        if let currentUser = UserDefaults.standard.string(forKey: App.currentUserKeyForUserDefaults), let currentUserPassword = UserDefaults.standard.string(forKey: App.currentUserPasswordKeyForUserDefaults) {
+            firebaseAuth.emailLogin(email: currentUser, password:currentUserPassword)
+        }
+        
         return true
     }
 

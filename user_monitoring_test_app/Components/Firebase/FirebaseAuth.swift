@@ -17,6 +17,10 @@ class FirebaseAuth {
             }
             else {
                 firebaseDatabase.addNewUser(userID: email)
+                
+                UserDefaults.standard.set(email, forKey: App.currentUserKeyForUserDefaults)
+                UserDefaults.standard.set(password, forKey: App.currentUserPasswordKeyForUserDefaults)
+                
                 currentUser = email
                 
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
@@ -31,6 +35,10 @@ class FirebaseAuth {
             }
             else {
                 firebaseDatabase.addNewUser(userID: email)
+                
+                UserDefaults.standard.set(email, forKey: App.currentUserKeyForUserDefaults)
+                UserDefaults.standard.set(password, forKey: App.currentUserPasswordKeyForUserDefaults)
+                
                 currentUser = email
                 
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
