@@ -15,3 +15,7 @@ var observedUsersListByCurrentUser = [MonitoringUser]()
 var usersListWhoMonitoringCurrentUser = [MonitoringUser]()
 
 var currentUser = String()
+
+extension Notification.Name {
+    static let loginSuccess = Notification.Name("loginSuccess")
+}

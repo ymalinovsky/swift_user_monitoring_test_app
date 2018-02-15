@@ -18,11 +18,8 @@ class FirebaseAuth {
             else {
 //                self.addNewUser(userID: email)
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let chatsNC = storyboard.instantiateViewController(withIdentifier: "userObservedListNavigationController")
                 currentUser = email
-                
-                self.signInVC.present(chatsNC, animated: true)
+                NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
             }
         })
     }
@@ -35,26 +32,9 @@ class FirebaseAuth {
             else {
 //                self.addNewUser(userID: email)
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let chatsNC = storyboard.instantiateViewController(withIdentifier: "userObservedListNavigationController")
                 currentUser = email
-                
-                self.loginVC.present(chatsNC, animated: true)
+                NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
             }
         })
-    }
-    
-    func logout() {
-        do {
-            try Auth.auth().signOut()
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homepageNC = storyboard.instantiateViewController(withIdentifier: "homepageNavigationController")
-            currentUser = String()
-            
-            self.chatVC.present(homepageNC, animated: true)
-        } catch {
-            print(error)
-        }
     }
 }

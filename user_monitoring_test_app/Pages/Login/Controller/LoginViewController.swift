@@ -17,6 +17,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: .loginSuccess, object: nil)
+    }
+    
+    @objc func loginSuccess(notification: NSNotification) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let chatsNC = storyboard.instantiateViewController(withIdentifier: "userObservedListNavigationController")
+        
+        present(chatsNC, animated: true)
     }
 
     @IBAction func LoginButtonAction(_ sender: UIButton) {

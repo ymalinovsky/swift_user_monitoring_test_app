@@ -12,6 +12,9 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
 
     @IBOutlet weak var tableView: UITableView!
     
+    let userObservedListCellIdentifier = "userObservedListCell"
+    let userObservedListSegueIdentifier = "userObservedListSegue"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,14 +35,16 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return observedUsersListByCurrentUser.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: userObservedListCellIdentifier)!
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        
     }
 }
