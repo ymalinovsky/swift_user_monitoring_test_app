@@ -1,5 +1,5 @@
 //
-//  MonitoringUser.swift
+//  AddUserToObserve.swift
 //  user_monitoring_test_app
 //
 //  Created by Yan Malinovsky on 15.02.2018.
@@ -8,10 +8,11 @@
 
 import Foundation
 
-struct MonitoringUser {
-    let userID: String
+class AddUserToObserve {
     
-    init(userID: String) {
-        self.userID = userID
+    func getUsersObserveList() -> [MonitoringUser] {
+        
+        
+        return [MonitoringUser]()
     }
 }

@@ -148,7 +148,7 @@
         <!--Navigation Controller-->
         <scene sceneID="USy-pp-tXb">
             <objects>
-                <navigationController id="fda-3V-8uY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="homepageNavigationController" id="fda-3V-8uY" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hTb-AG-Wa8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

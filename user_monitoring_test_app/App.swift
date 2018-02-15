@@ -11,6 +11,7 @@ import UIKit
 
 let firebaseAuth = FirebaseAuth()
 let firebaseDatabase = FirebaseDatabase()
+let firebaseObserve = FirebaseObserve()
 
 var fullUsersList = [MonitoringUser]()
 var observedUsersListByCurrentUser = [MonitoringUser]()
