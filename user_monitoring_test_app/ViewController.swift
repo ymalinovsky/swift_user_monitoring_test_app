@@ -26,13 +26,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startMonitoringSignificantLocationChanges()
         
         mapView.isMyLocationEnabled = true
+        mapView.settings.compassButton = true
+        
+        putMarkerToGoogleMap()
     }
     
     func putMarkerToGoogleMap() {
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.position = CLLocationCoordinate2D(latitude: 50.25, longitude: 28.75)
         marker.title = "Sydney"
         marker.snippet = "Australia"
+        marker.icon = UIImage(named: "dot")
         marker.map = mapView
     }
     
