@@ -11,13 +11,13 @@
 		40B3907BA7E151437276A9FD /* Pods_user_monitoring_test_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6552065E12E78E59461773E4 /* Pods_user_monitoring_test_app.framework */; };
 		854DB7CC465953EB613C364B /* Pods_user_monitoring_test_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0888C0B809C860F43CA9A413 /* Pods_user_monitoring_test_appTests.framework */; };
 		9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49654E203451D300C138B2 /* AppDelegate.swift */; };
-		9E496551203451D300C138B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E496550203451D300C138B2 /* ViewController.swift */; };
 		9E496554203451D300C138B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E496552203451D300C138B2 /* Main.storyboard */; };
 		9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E496555203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld */; };
 		9E496559203451D300C138B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E496558203451D300C138B2 /* Assets.xcassets */; };
 		9E49655C203451D300C138B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E49655A203451D300C138B2 /* LaunchScreen.storyboard */; };
 		9E496567203451D300C138B2 /* user_monitoring_test_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E496566203451D300C138B2 /* user_monitoring_test_appTests.swift */; };
 		9E496572203451D300C138B2 /* user_monitoring_test_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E496571203451D300C138B2 /* user_monitoring_test_appUITests.swift */; };
+		9E7D3D0C2035A269006102C6 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D3D0B2035A269006102C6 /* GoogleMapsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,6 @@
 		6552065E12E78E59461773E4 /* Pods_user_monitoring_test_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_user_monitoring_test_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E49654B203451D300C138B2 /* user_monitoring_test_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = user_monitoring_test_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E49654E203451D300C138B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9E496550203451D300C138B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9E496553203451D300C138B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E496556203451D300C138B2 /* user_monitoring_test_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = user_monitoring_test_app.xcdatamodel; sourceTree = "<group>"; };
 		9E496558203451D300C138B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		9E49656D203451D300C138B2 /* user_monitoring_test_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = user_monitoring_test_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E496571203451D300C138B2 /* user_monitoring_test_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user_monitoring_test_appUITests.swift; sourceTree = "<group>"; };
 		9E496573203451D300C138B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E7D3D0B2035A269006102C6 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		A0FF26F2466BA3C6C598BE7E /* Pods_user_monitoring_test_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_user_monitoring_test_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09863B4D5DE145F434368C9 /* Pods-user_monitoring_test_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-user_monitoring_test_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-user_monitoring_test_appTests/Pods-user_monitoring_test_appTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,8 +139,8 @@
 		9E49654D203451D300C138B2 /* user_monitoring_test_app */ = {
 			isa = PBXGroup;
 			children = (
+				9E7D3D082035A1B1006102C6 /* Pages */,
 				9E49654E203451D300C138B2 /* AppDelegate.swift */,
-				9E496550203451D300C138B2 /* ViewController.swift */,
 				9E496552203451D300C138B2 /* Main.storyboard */,
 				9E496558203451D300C138B2 /* Assets.xcassets */,
 				9E49655A203451D300C138B2 /* LaunchScreen.storyboard */,
@@ -166,6 +166,30 @@
 				9E496573203451D300C138B2 /* Info.plist */,
 			);
 			path = user_monitoring_test_appUITests;
+			sourceTree = "<group>";
+		};
+		9E7D3D082035A1B1006102C6 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				9E7D3D092035A1D4006102C6 /* GoogleMaps */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		9E7D3D092035A1D4006102C6 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				9E7D3D0A2035A238006102C6 /* Controller */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		9E7D3D0A2035A238006102C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E7D3D0B2035A269006102C6 /* GoogleMapsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,8 +485,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E496551203451D300C138B2 /* ViewController.swift in Sources */,
 				9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */,
+				9E7D3D0C2035A269006102C6 /* GoogleMapsViewController.swift in Sources */,
 				9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
