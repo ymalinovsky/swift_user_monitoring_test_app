@@ -20,7 +20,7 @@ let firebaseObserve = FirebaseObserve()
 
 var fullUsersList = [MonitoringUser]()
 var observedUsersListByCurrentUser = [MonitoringUser]()
-var usersListWhoMonitoringCurrentUser = [MonitoringUser]()
+var usersListWhoObservingCurrentUser = [MonitoringUser]()
 
 var currentUser = String()
 
