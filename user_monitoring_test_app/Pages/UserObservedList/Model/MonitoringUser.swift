@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct MonitoringUser {
     let userID: String
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
     
     init(userID: String) {
         self.userID = userID
