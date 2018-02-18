@@ -24,6 +24,10 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         navigationItem.title = currentUser
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -42,6 +46,8 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: userObservedListCellIdentifier)!
+        
+        cell.textLabel?.text = observedUsersListByCurrentUser[indexPath.row].userID
         
         return cell
     }
