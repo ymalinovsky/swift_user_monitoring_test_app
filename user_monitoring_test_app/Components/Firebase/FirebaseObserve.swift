@@ -46,8 +46,12 @@ class FirebaseObserve {
             
              let userID = userData["id"] as! String
             
-            observedUsersListByCurrentUser.append(MonitoringUser(userID: userID, latitude: nil, longitude: nil))
-            NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
+            if userID != currentUser {
+                if let index = fullUsersList.index(where: { $0.userID == userID}) {
+                    observedUsersListByCurrentUser.append(MonitoringUser(userID: userID, latitude: fullUsersList[index].latitude, longitude: fullUsersList[index].longitude))
+                    NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
+                }
+            }
         })
     }
     
@@ -57,23 +61,32 @@ class FirebaseObserve {
         coordinatesDB.observe(.childChanged, with: { (snapshot) -> Void in
             switch snapshot.key {
             case "latitude":
-                if let index = fullUsersList.index(where: { $0.userID == userID}) {
+                if let userIndex = fullUsersList.index(where: { $0.userID == userID}) {
                     let latitude = CLLocationDegrees(String(describing: snapshot.value!))
-                    let longitude = fullUsersList[index].longitude
+                    let longitude = fullUsersList[userIndex].longitude
                     
-                    fullUsersList[index] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
+                    fullUsersList[userIndex] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
+                    
+                    if let observedUserIndex = observedUsersListByCurrentUser.index(where: { $0.userID == userID}) {
+                        observedUsersListByCurrentUser[observedUserIndex] = fullUsersList[userIndex]
+                    }
                 }
+
             case "longitude":
-                if let index = fullUsersList.index(where: { $0.userID == userID}) {
-                    let latitude = fullUsersList[index].latitude
+                if let userIndex = fullUsersList.index(where: { $0.userID == userID}) {
+                    let latitude = fullUsersList[userIndex].latitude
                     let longitude = CLLocationDegrees(String(describing: snapshot.value!))
                     
-                    fullUsersList[index] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
+                    fullUsersList[userIndex] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
+                    
+                    if let observedUserIndex = observedUsersListByCurrentUser.index(where: { $0.userID == userID}) {
+                        observedUsersListByCurrentUser[observedUserIndex] = fullUsersList[userIndex]
+                    }
                 }
             default: break
             }
             
-//            NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: .googleMapsVCMarkerMustBeReload, object: nil, userInfo: nil)
         })
     }
 }

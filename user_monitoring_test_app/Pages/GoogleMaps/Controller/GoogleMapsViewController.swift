@@ -24,13 +24,25 @@ class GoogleMapsViewController: UIViewController {
         
         mapView.settings.compassButton = true
         
-        putMarkerToGoogleMap(latitude: 50.25, longitude: 28.75)
+        updateGoogleMapMarker()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(googleMapsVCMarkerMustBeReload), name: .googleMapsVCMarkerMustBeReload, object: nil)
+    }
+    
+    @objc func googleMapsVCMarkerMustBeReload(notification: NSNotification) {
+        updateGoogleMapMarker()
+    }
+    
+    func updateGoogleMapMarker() {
+        if let userIndex = observedUsersListByCurrentUser.index(where: { $0.userID == observedUser.userID}) {
+            if let latitude = observedUsersListByCurrentUser[userIndex].latitude, let longitude = observedUsersListByCurrentUser[userIndex].longitude {
+                putMarkerToGoogleMap(latitude: latitude, longitude: longitude)
+            }
+        }
     }
     
     func putMarkerToGoogleMap(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
         marker.icon = UIImage(named: "dot")
         marker.map = mapView
         
