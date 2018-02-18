@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class UserObservedListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserObservedListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var locationManager = CLLocationManager()
     
     let userObservedListCellIdentifier = "userObservedListCell"
     let userObservedListSegueIdentifier = "userObservedListSegue"
@@ -24,6 +27,11 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         tableView.dataSource = self
         
         navigationItem.title = currentUser
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         
         NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCTableViewMustBeReload), name: .userObservedListVCTableViewMustBeReload, object: nil)
     }
@@ -64,5 +72,34 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         selectedUser = observedUsersListByCurrentUser[indexPath.row]
         
         performSegue(withIdentifier: userObservedListSegueIdentifier, sender: self)
+    }
+    
+    // MARK: CLLocationManagerDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            firebaseDatabase.saveUserLocations(userID: currentUser, location: location)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted:
+            print("Location access was restricted.")
+        case .denied:
+            print("User denied access to location.")
+        case .notDetermined:
+            print("Location status not determined.")
+        case .authorizedAlways:
+            print("Location status is OK always.")
+        case .authorizedWhenInUse:
+            print("Location status is OK when app in use.")
+        }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        print("Error: \(error)")
     }
 }

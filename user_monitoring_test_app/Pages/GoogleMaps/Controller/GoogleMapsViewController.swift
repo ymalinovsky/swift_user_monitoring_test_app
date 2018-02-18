@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import CoreLocation
 import GoogleMaps
 
-class GoogleMapsViewController: UIViewController, CLLocationManagerDelegate {
+class GoogleMapsViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     
-    var locationManager = CLLocationManager()
     var zoomLevel: Float = 6.0
     
     var observedUser: MonitoringUser!
@@ -22,57 +20,23 @@ class GoogleMapsViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startMonitoringSignificantLocationChanges()
-        
-        mapView.isMyLocationEnabled = true
         mapView.settings.compassButton = true
         
-        putMarkerToGoogleMap()
+        putMarkerToGoogleMap(latitude: 50.25, longitude: 28.75)
     }
     
-    func putMarkerToGoogleMap() {
+    func putMarkerToGoogleMap(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 50.25, longitude: 28.75)
+        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         marker.title = "Sydney"
         marker.snippet = "Australia"
         marker.icon = UIImage(named: "dot")
         marker.map = mapView
-    }
-    
-    // MARK: CLLocationManagerDelegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location: CLLocation = locations.last!
-        print("Location: \(location)")
         
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
-        
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: zoomLevel)
         mapView.animate(to: camera)
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .restricted:
-            print("Location access was restricted.")
-        case .denied:
-            print("User denied access to location.")
-        case .notDetermined:
-            print("Location status not determined.")
-        case .authorizedAlways:
-            print("Location status is OK always.")
-        case .authorizedWhenInUse:
-            print("Location status is OK when app in use.")
-        }
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        locationManager.stopMonitoringSignificantLocationChanges()
-        print("Error: \(error)")
-    }
 }
 
 

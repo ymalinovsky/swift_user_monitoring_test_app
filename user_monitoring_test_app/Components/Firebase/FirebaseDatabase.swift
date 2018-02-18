@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 
 class FirebaseDatabase {
     func addNewUser(userID: String) {
@@ -24,6 +25,18 @@ class FirebaseDatabase {
         let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
         
         userDB.child("observedUsers").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("id").setValue(observedUserID) { (error, ref) in
+            if error != nil {
+                print(error!)
+            }
+        }
+    }
+    
+    func saveUserLocations(userID: String, location: CLLocation) {
+        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+        
+        let coordinates = ["latitude" : location.coordinate.latitude, "longitude" : location.coordinate.longitude]
+        
+        userDB.child("coordinates").setValue(coordinates) { (error, ref) in
             if error != nil {
                 print(error!)
             }
