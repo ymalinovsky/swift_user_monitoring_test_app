@@ -17,6 +17,8 @@ class GoogleMapsViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     var zoomLevel: Float = 6.0
     
+    var observedUser: MonitoringUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

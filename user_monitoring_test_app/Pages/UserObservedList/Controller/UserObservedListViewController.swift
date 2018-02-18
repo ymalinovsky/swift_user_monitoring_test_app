@@ -15,6 +15,8 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     let userObservedListCellIdentifier = "userObservedListCell"
     let userObservedListSegueIdentifier = "userObservedListSegue"
     
+    var selectedUser: MonitoringUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,15 +32,17 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         tableView.reloadData()
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier! {
+        case userObservedListSegueIdentifier:
+            let googleMapsVC = segue.destination as! GoogleMapsViewController
+            googleMapsVC.observedUser = selectedUser
+        default:
+            print("Unpredicted segue identifier.")
+        }
     }
-    */
 
     // MARK: UITableViewDataSource
     
@@ -55,6 +59,8 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedUser = observedUsersListByCurrentUser[indexPath.row]
         
+        performSegue(withIdentifier: userObservedListSegueIdentifier, sender: self)
     }
 }
