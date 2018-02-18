@@ -29,13 +29,10 @@ class FirebaseObserve {
         observedUsersDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
             
-            userData.forEach({ (observedUser ) in
-                let userID = observedUser.value
-                
-                observedUsersListByCurrentUser.append(MonitoringUser(userID: userID as! String))
-                
-                NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
-            })
+             let userID = userData["id"] as! String
+            
+            observedUsersListByCurrentUser.append(MonitoringUser(userID: userID))
+            NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
         })
     }
 }

@@ -35,12 +35,14 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case userObservedListSegueIdentifier:
-            let googleMapsVC = segue.destination as! GoogleMapsViewController
-            googleMapsVC.observedUser = selectedUser
-        default:
-            print("Unpredicted segue identifier.")
+        if let segueIdentifier = segue.identifier {
+            switch segueIdentifier {
+            case userObservedListSegueIdentifier:
+                let googleMapsVC = segue.destination as! GoogleMapsViewController
+                googleMapsVC.observedUser = selectedUser
+            default:
+                print("Unpredicted segue identifier.")
+            }
         }
     }
 

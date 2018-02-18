@@ -23,7 +23,7 @@ class FirebaseDatabase {
     func addObservedUser(userID: String, observedUserID: String) {
         let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
         
-        userDB.child("observedUsers").childByAutoId().child("id").setValue(observedUserID) { (error, ref) in
+        userDB.child("observedUsers").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("id").setValue(observedUserID) { (error, ref) in
             if error != nil {
                 print(error!)
             }
