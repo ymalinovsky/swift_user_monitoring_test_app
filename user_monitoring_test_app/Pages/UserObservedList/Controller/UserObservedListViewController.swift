@@ -22,9 +22,11 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         tableView.dataSource = self
         
         navigationItem.title = currentUser
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCTableViewMustBeReload), name: .userObservedListVCTableViewMustBeReload, object: nil)
     }
-
-    override func viewWillAppear(_ animated: Bool) {
+    
+    @objc func userObservedListVCTableViewMustBeReload(notification: NSNotification) {
         tableView.reloadData()
     }
     

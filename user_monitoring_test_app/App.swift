@@ -26,6 +26,7 @@ var currentUser = String()
 
 extension Notification.Name {
     static let loginSuccess = Notification.Name("loginSuccess")
+    static let userObservedListVCTableViewMustBeReload = Notification.Name("userObservedListVCTableViewMustBeReload")
 }
 
 extension UIApplication {
