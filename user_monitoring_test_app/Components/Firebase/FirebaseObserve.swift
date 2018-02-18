@@ -18,8 +18,20 @@ class FirebaseObserve {
             
             let userID = userData["id"] as! String
             
+            var latitude = String()
+            var longitude = String()
+            if userData["coordinates"] != nil {
+                let coordinates = userData["coordinates"] as! NSDictionary
+                latitude = String(describing: coordinates["latitude"]!)
+                longitude = String(describing: coordinates["longitude"]!)
+            }
+            
             if !fullUsersList.contains(where: { $0.userID == userID }) {
-                fullUsersList.append(MonitoringUser(userID: userID, latitude: nil, longitude: nil))
+                if latitude.isEmpty && longitude.isEmpty {
+                    fullUsersList.append(MonitoringUser(userID: userID, latitude: nil, longitude: nil))
+                } else {
+                    fullUsersList.append(MonitoringUser(userID: userID, latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude)))
+                }
                 self.observedUserObserver(userID: userID)
                 self.userCoordinatesObserver(userID: userID)
             }
