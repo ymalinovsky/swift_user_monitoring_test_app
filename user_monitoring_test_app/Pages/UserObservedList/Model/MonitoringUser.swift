@@ -14,7 +14,9 @@ struct MonitoringUser {
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     
-    init(userID: String) {
+    init(userID: String, latitude: CLLocationDegrees?, longitude: CLLocationDegrees?) {
         self.userID = userID
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }

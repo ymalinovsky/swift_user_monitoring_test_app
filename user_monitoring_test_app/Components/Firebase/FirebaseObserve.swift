@@ -19,7 +19,7 @@ class FirebaseObserve {
             let userID = userData["id"] as! String
             
             if !fullUsersList.contains(where: { $0.userID == userID }) {
-                fullUsersList.append(MonitoringUser(userID: userID))
+                fullUsersList.append(MonitoringUser(userID: userID, latitude: nil, longitude: nil))
                 self.observedUserObserver(userID: userID)
                 self.userCoordinatesObserver(userID: userID)
             }
@@ -34,7 +34,7 @@ class FirebaseObserve {
             
              let userID = userData["id"] as! String
             
-            observedUsersListByCurrentUser.append(MonitoringUser(userID: userID))
+            observedUsersListByCurrentUser.append(MonitoringUser(userID: userID, latitude: nil, longitude: nil))
             NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
         })
     }
@@ -45,21 +45,22 @@ class FirebaseObserve {
         coordinatesDB.observe(.childChanged, with: { (snapshot) -> Void in
             switch snapshot.key {
             case "latitude":
-                for user in fullUsersList {
-                    if user.userID == userID {
-//                        user.latitude = CLLocationDegrees(String(describing: snapshot.value!))
-                    }
+                if let index = fullUsersList.index(where: { $0.userID == userID}) {
+                    let latitude = CLLocationDegrees(String(describing: snapshot.value!))
+                    let longitude = fullUsersList[index].longitude
+                    
+                    fullUsersList[index] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
                 }
             case "longitude":
-                fullUsersList.forEach({ (user) in
-                    if user.userID == userID {
-//                        user.longitude = CLLocationDegrees(String(describing: snapshot.value!))
-                    }
-                })
+                if let index = fullUsersList.index(where: { $0.userID == userID}) {
+                    let latitude = fullUsersList[index].latitude
+                    let longitude = CLLocationDegrees(String(describing: snapshot.value!))
+                    
+                    fullUsersList[index] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
+                }
             default: break
             }
             
-            print("ATATA!!!")
 //            NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
         })
     }

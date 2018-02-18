@@ -17,6 +17,8 @@ class GoogleMapsViewController: UIViewController {
     
     var observedUser: MonitoringUser!
     
+    let marker = GMSMarker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +28,6 @@ class GoogleMapsViewController: UIViewController {
     }
     
     func putMarkerToGoogleMap(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         marker.title = "Sydney"
         marker.snippet = "Australia"
