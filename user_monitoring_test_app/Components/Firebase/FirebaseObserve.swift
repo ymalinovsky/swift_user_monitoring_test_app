@@ -17,9 +17,10 @@ class FirebaseObserve {
             
             let userID = userData["id"] as! String
             
-            fullUsersList.append(MonitoringUser(userID: userID))
-            
-            self.observedUserObserver(userID: userID)
+            if !fullUsersList.contains(where: { $0.userID == userID }) {
+                fullUsersList.append(MonitoringUser(userID: userID))
+                self.observedUserObserver(userID: userID)
+            }
         })
     }
     
@@ -34,5 +35,10 @@ class FirebaseObserve {
             observedUsersListByCurrentUser.append(MonitoringUser(userID: userID))
             NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
         })
+    }
+    
+    func userCoordinatesObserver(userID: String) {
+        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("coordinates")
+        
     }
 }
