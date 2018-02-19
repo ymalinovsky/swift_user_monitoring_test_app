@@ -23,11 +23,17 @@ class AssignUserObserveToUserViewController: UIViewController {
     @IBAction func yesButtonAction(_ sender: UIButton) {
         firebaseDatabase.removeNewUsersObserve(userID: currentUser, observedUserID: observedUserID)
         firebaseDatabase.addObservedUser(userID: currentUser, observedUserID: observedUserID)
+        
+        NotificationCenter.default.post(name: .userObservedListVCRemoveItemFromAssignUserObserveToUserQueue, object: nil, userInfo: [observedUserID: ["observedUserID": observedUserID]])
+        
         dismiss(animated: true)
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {
         firebaseDatabase.removeNewUsersObserve(userID: currentUser, observedUserID: observedUserID)
+        
+        NotificationCenter.default.post(name: .userObservedListVCRemoveItemFromAssignUserObserveToUserQueue, object: nil, userInfo: [observedUserID: ["observedUserID": observedUserID]])
+        
         dismiss(animated: true)
     }
     

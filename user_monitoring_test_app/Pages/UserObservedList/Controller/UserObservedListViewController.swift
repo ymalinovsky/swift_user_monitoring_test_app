@@ -19,6 +19,9 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     let userObservedListSegueIdentifier = "userObservedListSegue"
     
     var selectedUser: MonitoringUser!
+    var assignUserObserveToUserQueue = [AssignUserObserveToUserQueue]()
+    
+    let assignUserObserveToUserVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "assignUserObserveToUserViewController") as! AssignUserObserveToUserViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         
         NotificationCenter.default.addObserver(self, selector: #selector(agreeUserObservingOrNot), name: .agreeUserObservingOrNot, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCTableViewMustBeReload), name: .userObservedListVCTableViewMustBeReload, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCRemoveItemFromAssignUserObserveToUserQueue), name: .userObservedListVCRemoveItemFromAssignUserObserveToUserQueue, object: nil)
     }
     
     @objc func agreeUserObservingOrNot(notification: NSNotification) {
@@ -42,18 +46,43 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
             let observedUserData = notificationData as! [String: String]
             
             if let observedUserID = observedUserData["observedUserID"] {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let assignUserObserveToUserVC = storyboard.instantiateViewController(withIdentifier: "assignUserObserveToUserViewController") as! AssignUserObserveToUserViewController
+                assignUserObserveToUserQueue.append(AssignUserObserveToUserQueue(observedUserID: observedUserID))
                 
-                assignUserObserveToUserVC.observedUserID = observedUserID
-                
-                present(assignUserObserveToUserVC, animated: true)
+                if let topVC = UIApplication.topViewController() {
+                    let topVCName = NSStringFromClass(topVC.classForCoder).components(separatedBy: ".").last!
+                    if topVCName == "UserObservedListViewController" {
+                        assignUserObserveToUserVC.observedUserID = observedUserID
+                        
+                        present(assignUserObserveToUserVC, animated: true)
+                    }
+                }
             }
         }
     }
     
     @objc func userObservedListVCTableViewMustBeReload(notification: NSNotification) {
         tableView.reloadData()
+    }
+    
+    @objc func userObservedListVCRemoveItemFromAssignUserObserveToUserQueue(notification: NSNotification) {
+        if let notificationData = notification.userInfo?.first?.value {
+            let observedUserData = notificationData as! [String: String]
+            
+            if let observedUserID = observedUserData["observedUserID"] {
+                assignUserObserveToUserQueue = assignUserObserveToUserQueue.filter() { $0.observedUserID != observedUserID }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if assignUserObserveToUserQueue.count > 0 {
+            if let userObserveInQueue = assignUserObserveToUserQueue.last {
+                let observedUserID = userObserveInQueue.observedUserID
+                assignUserObserveToUserVC.observedUserID = observedUserID
+                
+                present(assignUserObserveToUserVC, animated: true)
+            }
+        }
     }
     
     // MARK: - Navigation

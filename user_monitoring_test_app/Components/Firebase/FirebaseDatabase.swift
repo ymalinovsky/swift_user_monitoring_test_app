@@ -69,7 +69,7 @@ class FirebaseDatabase {
                 let user = userData.value as! NSDictionary
                 let userID = user["id"] as! String
                 
-                if userID == currentUser {
+                if userID == currentUser, user["observedUsers"] != nil {
                     let observedUsers = user["observedUsers"] as! NSDictionary
                     
                     for observedUser in observedUsers {

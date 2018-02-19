@@ -12,6 +12,7 @@
 		854DB7CC465953EB613C364B /* Pods_user_monitoring_test_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0888C0B809C860F43CA9A413 /* Pods_user_monitoring_test_appTests.framework */; };
 		9E09C82B203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C82A203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift */; };
 		9E09C82F203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */; };
+		9E09C834203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C833203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift */; };
 		9E20C0992035C2F90025762E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E20C0982035C2F90025762E /* GoogleService-Info.plist */; };
 		9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407F72035CDD60040D3E2 /* SignInViewController.swift */; };
 		9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */; };
@@ -60,6 +61,7 @@
 		6552065E12E78E59461773E4 /* Pods_user_monitoring_test_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_user_monitoring_test_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E09C82A203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignUserObserveToUserViewController.swift; sourceTree = "<group>"; };
 		9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoObservingCurrentUserViewController.swift; sourceTree = "<group>"; };
+		9E09C833203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignUserObserveToUserQueue.swift; sourceTree = "<group>"; };
 		9E20C0982035C2F90025762E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E4407F72035CDD60040D3E2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				9E7D3D122035AE11006102C6 /* MonitoringUser.swift */,
+				9E09C833203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				9E4408042035FA370040D3E2 /* FirebaseObserve.swift in Sources */,
 				9E49654F203451D300C138B2 /* AppDelegate.swift in Sources */,
 				9E09C82B203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift in Sources */,
+				9E09C834203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift in Sources */,
 				9E7D3D0C2035A269006102C6 /* GoogleMapsViewController.swift in Sources */,
 				9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */,
 				9E4407FE2035E47C0040D3E2 /* FirebaseDatabase.swift in Sources */,

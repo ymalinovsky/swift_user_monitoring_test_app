@@ -30,6 +30,7 @@ extension Notification.Name {
     static let whoObservingCurrentUserVCTableViewMustBeReload = Notification.Name("whoObservingCurrentUserVCTableViewMustBeReload")
     static let googleMapsVCMarkerMustBeReload = Notification.Name("googleMapsVCMarkerMustBeReload")
     static let agreeUserObservingOrNot = Notification.Name("agreeUserObservingOrNot")
+    static let userObservedListVCRemoveItemFromAssignUserObserveToUserQueue = Notification.Name("userObservedListVCRemoveItemFromAssignUserObserveToUserQueue")
 }
 
 extension UIApplication {
