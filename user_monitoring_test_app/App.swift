@@ -20,13 +20,14 @@ let firebaseObserve = FirebaseObserve()
 
 var fullUsersList = [MonitoringUser]()
 var observedUsersListByCurrentUser = [MonitoringUser]()
-var usersListWhoObservingCurrentUser = [MonitoringUser]()
+var usersListByCurrentUserObserving = [MonitoringUser]()
 
 var currentUser = String()
 
 extension Notification.Name {
     static let loginSuccess = Notification.Name("loginSuccess")
     static let userObservedListVCTableViewMustBeReload = Notification.Name("userObservedListVCTableViewMustBeReload")
+    static let whoObservingCurrentUserVCTableViewMustBeReload = Notification.Name("whoObservingCurrentUserVCTableViewMustBeReload")
     static let googleMapsVCMarkerMustBeReload = Notification.Name("googleMapsVCMarkerMustBeReload")
     static let agreeUserObservingOrNot = Notification.Name("agreeUserObservingOrNot")
 }

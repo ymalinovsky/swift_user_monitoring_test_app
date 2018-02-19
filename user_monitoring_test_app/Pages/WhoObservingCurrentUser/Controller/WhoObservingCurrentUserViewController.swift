@@ -19,18 +19,30 @@ class WhoObservingCurrentUserViewController: UIViewController, UITableViewDelega
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        firebaseDatabase.getUsersListByUserObserving(userID: currentUser)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(whoObservingCurrentUserVCTableViewMustBeReload), name: .whoObservingCurrentUserVCTableViewMustBeReload, object: nil)
+    }
+    
+    @objc func whoObservingCurrentUserVCTableViewMustBeReload(notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        usersListByCurrentUserObserving = [MonitoringUser]()
     }
     
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersListWhoObservingCurrentUser.count
+        return usersListByCurrentUserObserving.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: whoObservingCurrentUserCellIdentifier)!
         
-        cell.textLabel?.text = usersListWhoObservingCurrentUser[indexPath.row].userID
+        cell.textLabel?.text = usersListByCurrentUserObserving[indexPath.row].userID
         
         return cell
     }
