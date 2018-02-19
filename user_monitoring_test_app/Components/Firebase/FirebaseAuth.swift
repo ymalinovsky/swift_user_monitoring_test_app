@@ -22,6 +22,7 @@ class FirebaseAuth {
                 UserDefaults.standard.set(password, forKey: App.currentUserPasswordKeyForUserDefaults)
                 
                 currentUser = email
+                firebaseObserve.checkNewUserObserver(userID: currentUser)
                 
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
             }
@@ -40,6 +41,7 @@ class FirebaseAuth {
                 UserDefaults.standard.set(password, forKey: App.currentUserPasswordKeyForUserDefaults)
                 
                 currentUser = email
+                firebaseObserve.checkNewUserObserver(userID: currentUser)
                 
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
             }

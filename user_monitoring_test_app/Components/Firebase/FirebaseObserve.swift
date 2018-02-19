@@ -32,9 +32,10 @@ class FirebaseObserve {
                 } else {
                     fullUsersList.append(MonitoringUser(userID: userID, latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude)))
                 }
-                self.checkNewUserObserver(userID: userID)
-                self.observedUserObserver(userID: userID)
-                self.userCoordinatesObserver(userID: userID)
+                
+                if userID == currentUser {
+                    self.observedUserObserver(userID: userID)
+                }
             }
         })
     }
@@ -45,10 +46,12 @@ class FirebaseObserve {
         observedUsersDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
             
-             let userID = userData["id"] as! String
+            let userID = userData["id"] as! String
             
             if userID != currentUser {
                 if let index = fullUsersList.index(where: { $0.userID == userID}) {
+                    self.userCoordinatesObserver(userID: userID)
+                    
                     observedUsersListByCurrentUser.append(MonitoringUser(userID: userID, latitude: fullUsersList[index].latitude, longitude: fullUsersList[index].longitude))
                     NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
                 }
@@ -64,9 +67,7 @@ class FirebaseObserve {
             
             let observedUserID = userData["id"] as! String
             
-            if observedUserID != currentUser {
-                NotificationCenter.default.post(name: .agreeUserObservingOrNot, object: nil, userInfo: [observedUserID: ["observedUserID": observedUserID]])
-            }
+            NotificationCenter.default.post(name: .agreeUserObservingOrNot, object: nil, userInfo: [observedUserID: ["observedUserID": observedUserID]])
         })
     }
     
