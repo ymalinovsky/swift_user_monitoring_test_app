@@ -82,22 +82,13 @@ class FirebaseObserve {
                     let longitude = fullUsersList[userIndex].longitude
                     
                     fullUsersList[userIndex] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
-                    
-                    if let observedUserIndex = observedUsersListByCurrentUser.index(where: { $0.userID == userID}) {
-                        observedUsersListByCurrentUser[observedUserIndex] = fullUsersList[userIndex]
-                    }
                 }
-
             case "longitude":
                 if let userIndex = fullUsersList.index(where: { $0.userID == userID}) {
                     let latitude = fullUsersList[userIndex].latitude
                     let longitude = CLLocationDegrees(String(describing: snapshot.value!))
                     
                     fullUsersList[userIndex] = MonitoringUser(userID: userID, latitude: latitude, longitude: longitude)
-                    
-                    if let observedUserIndex = observedUsersListByCurrentUser.index(where: { $0.userID == userID}) {
-                        observedUsersListByCurrentUser[observedUserIndex] = fullUsersList[userIndex]
-                    }
                 }
             default: break
             }

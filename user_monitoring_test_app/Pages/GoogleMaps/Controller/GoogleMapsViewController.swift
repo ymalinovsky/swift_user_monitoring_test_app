@@ -34,8 +34,8 @@ class GoogleMapsViewController: UIViewController {
     }
     
     func updateGoogleMapMarker() {
-        if let userIndex = observedUsersListByCurrentUser.index(where: { $0.userID == observedUser.userID}) {
-            if let latitude = observedUsersListByCurrentUser[userIndex].latitude, let longitude = observedUsersListByCurrentUser[userIndex].longitude {
+        if let userIndex = fullUsersList.index(where: { $0.userID == observedUser.userID}) {
+            if let latitude = fullUsersList[userIndex].latitude, let longitude = fullUsersList[userIndex].longitude {
                 putMarkerToGoogleMap(latitude: latitude, longitude: longitude)
             }
         }
