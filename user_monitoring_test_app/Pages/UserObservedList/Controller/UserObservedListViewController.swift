@@ -33,7 +33,23 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(agreeUserObservingOrNot), name: .agreeUserObservingOrNot, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCTableViewMustBeReload), name: .userObservedListVCTableViewMustBeReload, object: nil)
+    }
+    
+    @objc func agreeUserObservingOrNot(notification: NSNotification) {
+        if let notificationData = notification.userInfo?.first?.value {
+            let observedUserData = notificationData as! [String: String]
+            
+            if let observedUserID = observedUserData["observedUserID"] {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let assignUserObserveToUserVC = storyboard.instantiateViewController(withIdentifier: "assignUserObserveToUserViewController") as! AssignUserObserveToUserViewController
+                
+                assignUserObserveToUserVC.observedUserID = observedUserID
+                
+                present(assignUserObserveToUserVC, animated: true)
+            }
+        }
     }
     
     @objc func userObservedListVCTableViewMustBeReload(notification: NSNotification) {

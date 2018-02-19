@@ -164,7 +164,7 @@
         <!--Login View Controller-->
         <scene sceneID="k6Q-y1-PM0">
             <objects>
-                <viewController id="0pv-UC-3Qa" customClass="LoginViewController" customModule="firebase_realtime_database_test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0pv-UC-3Qa" customClass="LoginViewController" customModule="user_monitoring_test_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Azh-wg-BOb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +226,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="gIe-Ag-P5w">
             <objects>
-                <viewController id="rlj-jv-ioY" customClass="SignInViewController" customModule="firebase_realtime_database_test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rlj-jv-ioY" customClass="SignInViewController" customModule="user_monitoring_test_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ER9-Wf-kX6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,6 +281,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fyg-zp-ABK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604" y="-609.44527736131943"/>
+        </scene>
+        <!--Assign User Observe To User View Controller-->
+        <scene sceneID="BP3-lH-0wz">
+            <objects>
+                <viewController storyboardIdentifier="assignUserObserveToUserViewController" id="Emq-a4-jO1" customClass="AssignUserObserveToUserViewController" customModule="user_monitoring_test_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JQN-mA-iYZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZ3-0j-yb5">
+                                <rect key="frame" x="50" y="318.5" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="fHO-mI-1Ll"/>
+                                </constraints>
+                                <state key="normal" title="YES"/>
+                                <connections>
+                                    <action selector="yesButtonAction:" destination="Emq-a4-jO1" eventType="touchUpInside" id="Jur-ov-ogJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-iI-LFy">
+                                <rect key="frame" x="279" y="318.5" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="Z3T-DR-305"/>
+                                </constraints>
+                                <state key="normal" title="NO"/>
+                                <connections>
+                                    <action selector="noButtonAction:" destination="Emq-a4-jO1" eventType="touchUpInside" id="0y9-Lu-BWv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbH-6W-kfA">
+                                <rect key="frame" x="16" y="195" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NbH-6W-kfA" firstAttribute="top" secondItem="R7g-DZ-Z6v" secondAttribute="top" constant="175" id="Ad0-oX-z5Y"/>
+                            <constraint firstItem="tZ3-0j-yb5" firstAttribute="baseline" secondItem="W3g-iI-LFy" secondAttribute="baseline" id="CAA-Rf-b1h"/>
+                            <constraint firstItem="R7g-DZ-Z6v" firstAttribute="trailing" secondItem="W3g-iI-LFy" secondAttribute="trailing" constant="50" id="CFF-P1-aP8"/>
+                            <constraint firstItem="NbH-6W-kfA" firstAttribute="leading" secondItem="JQN-mA-iYZ" secondAttribute="leadingMargin" id="ECm-SH-7ae"/>
+                            <constraint firstItem="tZ3-0j-yb5" firstAttribute="centerY" secondItem="JQN-mA-iYZ" secondAttribute="centerY" id="TbO-lw-b7R"/>
+                            <constraint firstItem="tZ3-0j-yb5" firstAttribute="leading" secondItem="R7g-DZ-Z6v" secondAttribute="leading" constant="50" id="WSw-CC-Xfy"/>
+                            <constraint firstItem="NbH-6W-kfA" firstAttribute="trailing" secondItem="JQN-mA-iYZ" secondAttribute="trailingMargin" id="ljc-7M-95S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R7g-DZ-Z6v"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="NbH-6W-kfA" id="4L2-L6-wj2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P3r-xV-h8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-266" y="861"/>
         </scene>
     </scenes>
 </document>

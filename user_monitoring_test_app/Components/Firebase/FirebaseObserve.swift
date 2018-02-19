@@ -32,6 +32,7 @@ class FirebaseObserve {
                 } else {
                     fullUsersList.append(MonitoringUser(userID: userID, latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude)))
                 }
+                self.checkSelfUserObserver(userID: userID)
                 self.observedUserObserver(userID: userID)
                 self.userCoordinatesObserver(userID: userID)
             }
@@ -52,6 +53,18 @@ class FirebaseObserve {
                     NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
                 }
             }
+        })
+    }
+    
+    func checkSelfUserObserver(userID: String) {
+        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("checkSelfUsersObserve")
+        
+        userDB.observe(.childAdded, with: { (snapshot) -> Void in
+            let userData = snapshot.value as! NSDictionary
+            
+            let observedUserID = userData["id"] as! String
+            
+            NotificationCenter.default.post(name: .agreeUserObservingOrNot, object: nil, userInfo: [observedUserID: ["observedUserID": observedUserID]])
         })
     }
     

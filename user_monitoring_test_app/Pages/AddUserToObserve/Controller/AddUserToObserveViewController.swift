@@ -44,7 +44,7 @@ class AddUserToObserveViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = usersListToObserve[indexPath.row]
         
-        firebaseDatabase.addObservedUser(userID: currentUser, observedUserID: user.userID)
+        firebaseDatabase.checkSelfUsersObserve(userID: currentUser, observedUserID: user.userID)
         
         navigationController?.popViewController(animated: true)
     }
