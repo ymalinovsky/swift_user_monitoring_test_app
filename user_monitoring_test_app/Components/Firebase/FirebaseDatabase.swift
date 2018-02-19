@@ -21,21 +21,26 @@ class FirebaseDatabase {
         }
     }
     
-    func checkSelfUsersObserve(userID: String, observedUserID: String) {
-        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+    func addCheckNewUsersObserve(userID: String, observedUserID: String) {
+        let userDB = Database.database().reference().child("users").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
         
-        userDB.child("checkSelfUsersObserve").childByAutoId().child("id").setValue(observedUserID) { (error, ref) in
+        userDB.child("checkNewUsersObserve").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("id").setValue(userID) { (error, ref) in
             if error != nil {
                 print(error!)
             }
         }
     }
     
-    
-    func addObservedUser(userID: String, observedUserID: String) {
+    func removeNewUsersObserve(userID: String, observedUserID: String) {
         let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
         
-        userDB.child("observedUsers").childByAutoId().child("id").setValue(observedUserID) { (error, ref) in
+        userDB.child("checkNewUsersObserve").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).removeValue()
+    }
+    
+    func addObservedUser(userID: String, observedUserID: String) {
+        let userDB = Database.database().reference().child("users").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+        
+        userDB.child("observedUsers").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("id").setValue(userID) { (error, ref) in
             if error != nil {
                 print(error!)
             }

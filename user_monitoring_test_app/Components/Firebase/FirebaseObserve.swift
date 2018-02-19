@@ -32,7 +32,7 @@ class FirebaseObserve {
                 } else {
                     fullUsersList.append(MonitoringUser(userID: userID, latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude)))
                 }
-                self.checkSelfUserObserver(userID: userID)
+                self.checkNewUserObserver(userID: userID)
                 self.observedUserObserver(userID: userID)
                 self.userCoordinatesObserver(userID: userID)
             }
@@ -56,15 +56,17 @@ class FirebaseObserve {
         })
     }
     
-    func checkSelfUserObserver(userID: String) {
-        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("checkSelfUsersObserve")
+    func checkNewUserObserver(userID: String) {
+        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("checkNewUsersObserve")
         
         userDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
             
             let observedUserID = userData["id"] as! String
             
-            NotificationCenter.default.post(name: .agreeUserObservingOrNot, object: nil, userInfo: [observedUserID: ["observedUserID": observedUserID]])
+            if observedUserID != currentUser {
+                NotificationCenter.default.post(name: .agreeUserObservingOrNot, object: nil, userInfo: [observedUserID: ["observedUserID": observedUserID]])
+            }
         })
     }
     
