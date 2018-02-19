@@ -11,6 +11,7 @@
 		40B3907BA7E151437276A9FD /* Pods_user_monitoring_test_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6552065E12E78E59461773E4 /* Pods_user_monitoring_test_app.framework */; };
 		854DB7CC465953EB613C364B /* Pods_user_monitoring_test_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0888C0B809C860F43CA9A413 /* Pods_user_monitoring_test_appTests.framework */; };
 		9E09C82B203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C82A203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift */; };
+		9E09C82F203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */; };
 		9E20C0992035C2F90025762E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E20C0982035C2F90025762E /* GoogleService-Info.plist */; };
 		9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407F72035CDD60040D3E2 /* SignInViewController.swift */; };
 		9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */; };
@@ -58,6 +59,7 @@
 		5F62F9481418D87237FC19A1 /* Pods-user_monitoring_test_appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-user_monitoring_test_appUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-user_monitoring_test_appUITests/Pods-user_monitoring_test_appUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6552065E12E78E59461773E4 /* Pods_user_monitoring_test_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_user_monitoring_test_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E09C82A203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignUserObserveToUserViewController.swift; sourceTree = "<group>"; };
+		9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoObservingCurrentUserViewController.swift; sourceTree = "<group>"; };
 		9E20C0982035C2F90025762E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E4407F72035CDD60040D3E2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,22 @@
 			isa = PBXGroup;
 			children = (
 				9E09C82A203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9E09C82C203B107000B45CF1 /* WhoObservingCurrentUser */ = {
+			isa = PBXGroup;
+			children = (
+				9E09C82D203B107800B45CF1 /* Controller */,
+			);
+			path = WhoObservingCurrentUser;
+			sourceTree = "<group>";
+		};
+		9E09C82D203B107800B45CF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,6 +289,7 @@
 		9E7D3D082035A1B1006102C6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				9E09C82C203B107000B45CF1 /* WhoObservingCurrentUser */,
 				9E09C828203AE51A00B45CF1 /* AssignUserObserveToUser */,
 				9E4407FF2035F2DF0040D3E2 /* AddUserToObserve */,
 				9E4407F82035CDD60040D3E2 /* Login */,
@@ -654,6 +673,7 @@
 				9E4407FE2035E47C0040D3E2 /* FirebaseDatabase.swift in Sources */,
 				9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */,
 				9E4408072035FC690040D3E2 /* AddUserToObserve.swift in Sources */,
+				9E09C82F203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift in Sources */,
 				9E7D3D152035BC55006102C6 /* App.swift in Sources */,
 				9E7D3D132035AE11006102C6 /* MonitoringUser.swift in Sources */,
 				9E7D3D102035AC03006102C6 /* UserObservedListViewController.swift in Sources */,
