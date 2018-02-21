@@ -59,7 +59,7 @@ class HamburgerMenu {
     
     private func animateCenterPanelXPosition(centerVC: UIViewController, targetPosition: CGFloat, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            centerVC.view.frame.origin.x = targetPosition
+            centerVC.view.bounds.origin.x = -targetPosition
         }, completion: completion)
     }
 }

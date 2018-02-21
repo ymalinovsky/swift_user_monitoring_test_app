@@ -43,6 +43,7 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         NotificationCenter.default.addObserver(self, selector: #selector(agreeUserObservingOrNot), name: .agreeUserObservingOrNot, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCTableViewMustBeReload), name: .userObservedListVCTableViewMustBeReload, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCRemoveItemFromAssignUserObserveToUserQueue), name: .userObservedListVCRemoveItemFromAssignUserObserveToUserQueue, object: nil)
+        
     }
     
     @objc func agreeUserObservingOrNot(notification: NSNotification) {
@@ -97,7 +98,7 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func menuAction(_ sender: UIBarButtonItem) {
         hamburgerMenu.animateLeftPanel(centerVC: self, leftVC: menuVC, shouldExpand: shouldExpandMenu)
-        
+
         if shouldExpandMenu {
             shouldExpandMenu = false
         } else {
