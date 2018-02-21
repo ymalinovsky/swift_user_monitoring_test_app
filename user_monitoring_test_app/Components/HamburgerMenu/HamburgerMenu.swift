@@ -18,8 +18,9 @@ class HamburgerMenu {
             addLeftSidePanel(centerVC: centerVC, leftVC: leftVC)
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: centerVC.view.frame.width - centerPanelExpandedOffset)
         } else {
-            leftVC.removeFromParentViewController()
-            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0)
+            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0) { _ in
+                leftVC.removeFromParentViewController()
+            }
         }
     }
     
@@ -28,8 +29,9 @@ class HamburgerMenu {
             addRightSidePanel(centerVC: centerVC, rightVC: rightVC)
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: -centerVC.view.frame.width + centerPanelExpandedOffset)
         } else {
-            rightVC.removeFromParentViewController()
-            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0)
+            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0) { _ in
+                rightVC.removeFromParentViewController()
+            }
         }
     }
     
