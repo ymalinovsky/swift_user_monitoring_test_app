@@ -428,6 +428,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hamburgerMenu" width="30" height="30"/>
+        <image name="hamburgerMenu" width="20" height="20"/>
     </resources>
 </document>

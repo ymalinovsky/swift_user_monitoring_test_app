@@ -13,33 +13,40 @@ class HamburgerMenu {
     
     private let centerPanelExpandedOffset: CGFloat = 60
     
-    func animateLeftPanel(leftVC: UIViewController, centerVC: UIViewController, shouldExpand: Bool) {
+    func animateLeftPanel(centerVC: UIViewController, shouldExpand: Bool) {
         if shouldExpand {
-            addChildSidePanelController(centerVC: centerVC, childSideVC: leftVC)
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: centerVC.view.frame.width - centerPanelExpandedOffset)
         } else {
-            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0) { _ in
-                leftVC.view.removeFromSuperview()
-            }
+            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0)
         }
     }
     
-    func animateRightPanel(rightVC: UIViewController, centerVC: UIViewController, shouldExpand: Bool) {
+    func animateRightPanel(centerVC: UIViewController, shouldExpand: Bool) {
         if shouldExpand {
-            addChildSidePanelController(centerVC: centerVC, childSideVC: rightVC)
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: -centerVC.view.frame.width + centerPanelExpandedOffset)
         } else {
-            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0) { _ in
-                rightVC.view.removeFromSuperview()
-            }
+            animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0)
         }
     }
     
-    private func addChildSidePanelController(centerVC: UIViewController, childSideVC: UIViewController) {
-        centerVC.view.insertSubview(childSideVC.view, at: -1)
+    func addLeftSidePanel(centerVC: UIViewController, leftVC: UIViewController) {
+        leftVC.view.frame = centerVC.view.bounds;
+        leftVC.view.frame.origin.x = -leftVC.view.frame.size.width + centerPanelExpandedOffset
 
-        centerVC.addChildViewController(childSideVC)
-        childSideVC.didMove(toParentViewController: centerVC)
+        leftVC.willMove(toParentViewController: centerVC)
+        centerVC.view.insertSubview(leftVC.view, at: 0)
+        centerVC.addChildViewController(leftVC)
+        leftVC.didMove(toParentViewController: centerVC)
+    }
+    
+    func addRightSidePanel(centerVC: UIViewController, rightVC: UIViewController) {
+        rightVC.view.frame = centerVC.view.bounds;
+        rightVC.view.frame.origin.x = rightVC.view.frame.size.width
+        
+        rightVC.willMove(toParentViewController: centerVC)
+        centerVC.view.insertSubview(rightVC.view, at: 0)
+        centerVC.addChildViewController(rightVC)
+        rightVC.didMove(toParentViewController: centerVC)
     }
     
     private func animateCenterPanelXPosition(centerVC: UIViewController, targetPosition: CGFloat, completion: ((Bool) -> Void)? = nil) {

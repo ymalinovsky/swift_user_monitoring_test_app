@@ -30,6 +30,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: menuCellIdentifier)!
         
+        cell.textLabel?.text = "ATATA!!!"
+        
         return cell
     }
     

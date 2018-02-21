@@ -40,6 +40,8 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
+        hamburgerMenu.addLeftSidePanel(centerVC: self, leftVC: menuVC)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(agreeUserObservingOrNot), name: .agreeUserObservingOrNot, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCTableViewMustBeReload), name: .userObservedListVCTableViewMustBeReload, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userObservedListVCRemoveItemFromAssignUserObserveToUserQueue), name: .userObservedListVCRemoveItemFromAssignUserObserveToUserQueue, object: nil)
@@ -96,7 +98,7 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: Actions
     
     @IBAction func menuAction(_ sender: UIBarButtonItem) {
-        hamburgerMenu.animateLeftPanel(leftVC: menuVC, centerVC: self, shouldExpand: shouldExpandMenu)
+        hamburgerMenu.animateLeftPanel(centerVC: self, shouldExpand: shouldExpandMenu)
         
         if shouldExpandMenu {
             shouldExpandMenu = false
