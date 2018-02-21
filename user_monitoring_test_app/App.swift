@@ -24,6 +24,8 @@ var usersListByCurrentUserObserving = [MonitoringUser]()
 
 var currentUser = String()
 
+var hamburgerMenu = HamburgerMenu()
+
 extension Notification.Name {
     static let loginSuccess = Notification.Name("loginSuccess")
     static let userObservedListVCTableViewMustBeReload = Notification.Name("userObservedListVCTableViewMustBeReload")

@@ -23,6 +23,10 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
     
     let assignUserObserveToUserVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "assignUserObserveToUserViewController") as! AssignUserObserveToUserViewController
     
+    let menuVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuViewController") as! MenuViewController
+    
+    var shouldExpandMenu = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -85,10 +89,20 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        shouldExpandMenu = true
+    }
+    
     // MARK: Actions
     
     @IBAction func menuAction(_ sender: UIBarButtonItem) {
+        hamburgerMenu.animateLeftPanel(leftVC: menuVC, centerVC: self, shouldExpand: shouldExpandMenu)
         
+        if shouldExpandMenu {
+            shouldExpandMenu = false
+        } else {
+            shouldExpandMenu = true
+        }
     }
     
     // MARK: Navigation
