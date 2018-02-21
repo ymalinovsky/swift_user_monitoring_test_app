@@ -85,7 +85,13 @@ class UserObservedListViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    // MARK: - Navigation
+    // MARK: Actions
+    
+    @IBAction func menuAction(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    // MARK: Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let segueIdentifier = segue.identifier {

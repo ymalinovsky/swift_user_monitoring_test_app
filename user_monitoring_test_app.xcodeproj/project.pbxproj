@@ -14,6 +14,7 @@
 		9E09C82F203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */; };
 		9E09C834203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C833203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift */; };
 		9E20C0992035C2F90025762E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E20C0982035C2F90025762E /* GoogleService-Info.plist */; };
+		9E41B9DA203D9F2F0035D9BF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E41B9D9203D9F2F0035D9BF /* MenuViewController.swift */; };
 		9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407F72035CDD60040D3E2 /* SignInViewController.swift */; };
 		9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */; };
 		9E4407FE2035E47C0040D3E2 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4407FD2035E47C0040D3E2 /* FirebaseDatabase.swift */; };
@@ -63,6 +64,7 @@
 		9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoObservingCurrentUserViewController.swift; sourceTree = "<group>"; };
 		9E09C833203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignUserObserveToUserQueue.swift; sourceTree = "<group>"; };
 		9E20C0982035C2F90025762E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E41B9D9203D9F2F0035D9BF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9E4407F72035CDD60040D3E2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9E4407FA2035CDD60040D3E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E4407FD2035E47C0040D3E2 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
@@ -170,6 +172,22 @@
 			isa = PBXGroup;
 			children = (
 				9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9E41B9D7203D9EEC0035D9BF /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				9E41B9D8203D9F1A0035D9BF /* Controller */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		9E41B9D8203D9F1A0035D9BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E41B9D9203D9F2F0035D9BF /* MenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -291,6 +309,7 @@
 		9E7D3D082035A1B1006102C6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				9E41B9D7203D9EEC0035D9BF /* Menu */,
 				9E09C82C203B107000B45CF1 /* WhoObservingCurrentUser */,
 				9E09C828203AE51A00B45CF1 /* AssignUserObserveToUser */,
 				9E4407FF2035F2DF0040D3E2 /* AddUserToObserve */,
@@ -676,6 +695,7 @@
 				9E496557203451D300C138B2 /* user_monitoring_test_app.xcdatamodeld in Sources */,
 				9E4407FE2035E47C0040D3E2 /* FirebaseDatabase.swift in Sources */,
 				9E4407FB2035CDD60040D3E2 /* SignInViewController.swift in Sources */,
+				9E41B9DA203D9F2F0035D9BF /* MenuViewController.swift in Sources */,
 				9E4408072035FC690040D3E2 /* AddUserToObserve.swift in Sources */,
 				9E09C82F203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift in Sources */,
 				9E7D3D152035BC55006102C6 /* App.swift in Sources */,

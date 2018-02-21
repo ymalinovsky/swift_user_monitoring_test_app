@@ -7,10 +7,51 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Menu View Controller-->
+        <scene sceneID="G9h-F7-BOk">
+            <objects>
+                <viewController id="Pl5-jE-fG8" customClass="MenuViewController" customModule="user_monitoring_test_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tTq-ch-3wW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GJR-Vn-74V">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" id="h2V-YG-G69">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h2V-YG-G69" id="Ghv-NV-37S">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GJR-Vn-74V" firstAttribute="trailing" secondItem="ibH-Za-HZW" secondAttribute="trailing" id="CCE-6r-uip"/>
+                            <constraint firstItem="GJR-Vn-74V" firstAttribute="bottom" secondItem="ibH-Za-HZW" secondAttribute="bottom" id="TLZ-Gy-GUx"/>
+                            <constraint firstItem="GJR-Vn-74V" firstAttribute="leading" secondItem="ibH-Za-HZW" secondAttribute="leading" id="Vr9-lH-Nzr"/>
+                            <constraint firstItem="GJR-Vn-74V" firstAttribute="top" secondItem="ibH-Za-HZW" secondAttribute="top" id="XG9-ty-CG6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ibH-Za-HZW"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="GJR-Vn-74V" id="B7e-Vt-Gce"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5K-kz-dr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1943.2" y="133.5832083958021"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1mL-I6-wI5">
             <objects>
@@ -60,16 +101,23 @@
                         <viewLayoutGuide key="safeArea" id="Mc4-by-Y09"/>
                     </view>
                     <navigationItem key="navigationItem" id="XK2-RA-WxZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="GSE-rh-nqZ">
+                        <barButtonItem key="leftBarButtonItem" image="hamburgerMenu" id="OmB-Y1-rtE">
                             <connections>
-                                <segue destination="2XR-cU-PVw" kind="show" id="Dfd-D1-Npq"/>
+                                <action selector="menuAction:" destination="doX-jn-rPg" id="pb8-6b-XSV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2E0-sM-P6P">
-                            <connections>
-                                <segue destination="cU2-eQ-2Jd" kind="show" id="LsI-Kb-nAt"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="2E0-sM-P6P">
+                                <connections>
+                                    <segue destination="cU2-eQ-2Jd" kind="show" id="LsI-Kb-nAt"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="GSE-rh-nqZ">
+                                <connections>
+                                    <segue destination="2XR-cU-PVw" kind="show" id="Dfd-D1-Npq"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Z3z-oB-CAP" id="50H-ar-m0U"/>
@@ -336,20 +384,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZ3-0j-yb5">
-                                <rect key="frame" x="50" y="318.5" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="fHO-mI-1Ll"/>
-                                </constraints>
+                                <rect key="frame" x="50" y="318.5" width="30" height="30"/>
                                 <state key="normal" title="YES"/>
                                 <connections>
                                     <action selector="yesButtonAction:" destination="Emq-a4-jO1" eventType="touchUpInside" id="Jur-ov-ogJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-iI-LFy">
-                                <rect key="frame" x="279" y="318.5" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="Z3T-DR-305"/>
-                                </constraints>
+                                <rect key="frame" x="295" y="318.5" width="30" height="30"/>
                                 <state key="normal" title="NO"/>
                                 <connections>
                                     <action selector="noButtonAction:" destination="Emq-a4-jO1" eventType="touchUpInside" id="0y9-Lu-BWv"/>
@@ -370,7 +412,9 @@
                             <constraint firstItem="NbH-6W-kfA" firstAttribute="leading" secondItem="JQN-mA-iYZ" secondAttribute="leadingMargin" id="ECm-SH-7ae"/>
                             <constraint firstItem="tZ3-0j-yb5" firstAttribute="centerY" secondItem="JQN-mA-iYZ" secondAttribute="centerY" id="TbO-lw-b7R"/>
                             <constraint firstItem="tZ3-0j-yb5" firstAttribute="leading" secondItem="R7g-DZ-Z6v" secondAttribute="leading" constant="50" id="WSw-CC-Xfy"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tZ3-0j-yb5" secondAttribute="trailing" constant="20" symbolic="YES" id="Yeo-vB-GnX"/>
                             <constraint firstItem="NbH-6W-kfA" firstAttribute="trailing" secondItem="JQN-mA-iYZ" secondAttribute="trailingMargin" id="ljc-7M-95S"/>
+                            <constraint firstItem="W3g-iI-LFy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JQN-mA-iYZ" secondAttribute="leading" constant="20" symbolic="YES" id="mQ6-1N-Yrn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R7g-DZ-Z6v"/>
                     </view>
@@ -383,4 +427,7 @@
             <point key="canvasLocation" x="-1178" y="847"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hamburgerMenu" width="30" height="30"/>
+    </resources>
 </document>
