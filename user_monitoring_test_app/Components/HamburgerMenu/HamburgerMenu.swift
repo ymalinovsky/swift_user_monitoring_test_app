@@ -30,21 +30,23 @@ class HamburgerMenu {
     }
     
     func addLeftSidePanel(centerVC: UIViewController, leftVC: UIViewController) {
-        leftVC.view.frame = centerVC.view.bounds;
+        leftVC.view.frame = centerVC.view.bounds
         leftVC.view.frame.origin.x = -leftVC.view.frame.size.width + centerPanelExpandedOffset
-
+        leftVC.view.frame.size.width -= centerPanelExpandedOffset
+        
         leftVC.willMove(toParentViewController: centerVC)
-        centerVC.view.insertSubview(leftVC.view, at: 0)
+        centerVC.view.addSubview(leftVC.view)
         centerVC.addChildViewController(leftVC)
         leftVC.didMove(toParentViewController: centerVC)
     }
     
     func addRightSidePanel(centerVC: UIViewController, rightVC: UIViewController) {
-        rightVC.view.frame = centerVC.view.bounds;
+        rightVC.view.frame = centerVC.view.bounds
         rightVC.view.frame.origin.x = rightVC.view.frame.size.width
+        rightVC.view.frame.size.width -= centerPanelExpandedOffset
         
         rightVC.willMove(toParentViewController: centerVC)
-        centerVC.view.insertSubview(rightVC.view, at: 0)
+        centerVC.view.addSubview(rightVC.view)
         centerVC.addChildViewController(rightVC)
         rightVC.didMove(toParentViewController: centerVC)
     }
