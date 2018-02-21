@@ -13,23 +13,27 @@ class HamburgerMenu {
     
     private let centerPanelExpandedOffset: CGFloat = 60
     
-    func animateLeftPanel(centerVC: UIViewController, shouldExpand: Bool) {
+    func animateLeftPanel(centerVC: UIViewController, leftVC: UIViewController, shouldExpand: Bool) {
         if shouldExpand {
+            addLeftSidePanel(centerVC: centerVC, leftVC: leftVC)
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: centerVC.view.frame.width - centerPanelExpandedOffset)
         } else {
+            leftVC.removeFromParentViewController()
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0)
         }
     }
     
-    func animateRightPanel(centerVC: UIViewController, shouldExpand: Bool) {
+    func animateRightPanel(centerVC: UIViewController, rightVC: UIViewController, shouldExpand: Bool) {
         if shouldExpand {
+            addRightSidePanel(centerVC: centerVC, rightVC: rightVC)
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: -centerVC.view.frame.width + centerPanelExpandedOffset)
         } else {
+            rightVC.removeFromParentViewController()
             animateCenterPanelXPosition(centerVC: centerVC, targetPosition: 0)
         }
     }
     
-    func addLeftSidePanel(centerVC: UIViewController, leftVC: UIViewController) {
+    private func addLeftSidePanel(centerVC: UIViewController, leftVC: UIViewController) {
         leftVC.view.frame = centerVC.view.bounds
         leftVC.view.frame.origin.x = -leftVC.view.frame.size.width + centerPanelExpandedOffset
         leftVC.view.frame.size.width -= centerPanelExpandedOffset
@@ -40,7 +44,7 @@ class HamburgerMenu {
         leftVC.didMove(toParentViewController: centerVC)
     }
     
-    func addRightSidePanel(centerVC: UIViewController, rightVC: UIViewController) {
+    private func addRightSidePanel(centerVC: UIViewController, rightVC: UIViewController) {
         rightVC.view.frame = centerVC.view.bounds
         rightVC.view.frame.origin.x = rightVC.view.frame.size.width
         rightVC.view.frame.size.width -= centerPanelExpandedOffset
