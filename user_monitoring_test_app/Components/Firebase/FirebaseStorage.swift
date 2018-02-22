@@ -43,10 +43,6 @@ class FirebaseStorage {
             downloadTask.observe(.success) { snapshot in
                 NotificationCenter.default.post(name: .profileImageDownloadCompletedSuccessfully, object: nil, userInfo: [userID: ["profileImageFilePath": dataFile]])
             }
-            
-            downloadTask.observe(.failure) { snapshot in
-                print("File doesn't exist")
-            }
         }
     }
 }
