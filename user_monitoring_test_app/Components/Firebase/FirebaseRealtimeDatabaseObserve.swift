@@ -1,5 +1,5 @@
 //
-//  FirebaseObserve.swift
+//  FirebaseRealtimeDatabaseObserve.swift
 //  user_monitoring_test_app
 //
 //  Created by Yan Malinovsky on 15.02.2018.
@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import CoreLocation
 
-class FirebaseObserve {
+class FirebaseRealtimeDatabaseObserve {
     func newUserObserver() {
         let userDB = Database.database().reference().child("users")
         userDB.observe(.childAdded, with: { (snapshot) -> Void in
@@ -41,7 +41,7 @@ class FirebaseObserve {
     }
     
     func observedUserObserver(userID: String) {
-        let observedUsersDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("observedUsers")
+        let observedUsersDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("observedUsers")
         
         observedUsersDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
@@ -60,7 +60,7 @@ class FirebaseObserve {
     }
     
     func checkNewUserObserver(userID: String) {
-        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("checkNewUsersObserve")
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("checkNewUsersObserve")
         
         userDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
@@ -72,7 +72,7 @@ class FirebaseObserve {
     }
     
     func userCoordinatesObserver(userID: String) {
-        let coordinatesDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("coordinates")
+        let coordinatesDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("coordinates")
         
         coordinatesDB.observe(.childChanged, with: { (snapshot) -> Void in
             switch snapshot.key {

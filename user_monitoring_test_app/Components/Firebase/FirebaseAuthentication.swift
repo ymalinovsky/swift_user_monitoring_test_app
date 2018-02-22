@@ -1,5 +1,5 @@
 //
-//  FirebaseAuth.swift
+//  FirebaseAuthentication.swift
 //  user_monitoring_test_app
 //
 //  Created by Yan Malinovsky on 15.02.2018.
@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class FirebaseAuth {
+class FirebaseAuthentication {
     func emailRegistration(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {

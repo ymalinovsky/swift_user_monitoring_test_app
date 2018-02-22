@@ -9,6 +9,7 @@ target 'user_monitoring_test_app' do
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Auth'
+    pod 'Firebase/Storage'
 
   target 'user_monitoring_test_appTests' do
     inherit! :search_paths

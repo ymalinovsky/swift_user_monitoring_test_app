@@ -1,5 +1,5 @@
 //
-//  FirebaseDatabase.swift
+//  FirebaseRealtimeDatabase.swift
 //  user_monitoring_test_app
 //
 //  Created by Yan Malinovsky on 15.02.2018.
@@ -10,9 +10,9 @@ import Foundation
 import Firebase
 import CoreLocation
 
-class FirebaseDatabase {
+class FirebaseRealtimeDatabase {
     func addNewUser(userID: String) {
-        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID))
         
         userDB.child("id").setValue(userID) { (error, ref) in
             if error != nil {
@@ -22,9 +22,9 @@ class FirebaseDatabase {
     }
     
     func addCheckNewUsersObserve(userID: String, observedUserID: String) {
-        let userDB = Database.database().reference().child("users").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: observedUserID))
         
-        userDB.child("checkNewUsersObserve").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("id").setValue(userID) { (error, ref) in
+        userDB.child("checkNewUsersObserve").child(getValidUserID(userID: userID)).child("id").setValue(userID) { (error, ref) in
             if error != nil {
                 print(error!)
             }
@@ -32,15 +32,15 @@ class FirebaseDatabase {
     }
     
     func removeNewUsersObserve(userID: String, observedUserID: String) {
-        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID))
         
-        userDB.child("checkNewUsersObserve").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).removeValue()
+        userDB.child("checkNewUsersObserve").child(getValidUserID(userID: observedUserID)).removeValue()
     }
     
     func addObservedUser(userID: String, observedUserID: String) {
-        let userDB = Database.database().reference().child("users").child(observedUserID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: observedUserID))
         
-        userDB.child("observedUsers").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!).child("id").setValue(userID) { (error, ref) in
+        userDB.child("observedUsers").child(getValidUserID(userID: userID)).child("id").setValue(userID) { (error, ref) in
             if error != nil {
                 print(error!)
             }
@@ -48,7 +48,7 @@ class FirebaseDatabase {
     }
     
     func saveUserLocations(userID: String, location: CLLocation) {
-        let userDB = Database.database().reference().child("users").child(userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!)
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID))
         
         let coordinates = ["latitude" : location.coordinate.latitude, "longitude" : location.coordinate.longitude]
         

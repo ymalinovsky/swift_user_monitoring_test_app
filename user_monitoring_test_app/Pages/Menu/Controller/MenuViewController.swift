@@ -65,8 +65,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        profileImageView.image = chosenImage
+        let cropedChosenImage = resizeImage(image: chosenImage, toSize: CGSize(width: profileImageView.frame.size.width, height: profileImageView.frame.size.height))
+        profileImageView.image = cropedChosenImage
         profileImageView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        if let filePath = helper.getProfileImageURLPath() {
+            firebaseStorage.uploadProfileImage(filePath: filePath, userID: currentUser)
+        }
         
         dismiss(animated: true)
     }

@@ -76,4 +76,29 @@ class Menu {
             controller.present(alertController, animated: true)
         }
     }
+    
+    func getProfileImageURLPath() -> URL? {
+        if let image = controller.profileImageView.image {
+            let imageData = UIImagePNGRepresentation(image)
+            
+            let fileName = "profile"
+            let fileExtension = "png"
+            
+            let fileManager = FileManager.default
+            let dirPaths = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+            if let dirPath = dirPaths.first {
+                let dataFile = dirPath.appendingPathComponent("\(fileName).\(fileExtension)").path
+                
+                if fileManager.fileExists(atPath: dataFile) {
+                    try! fileManager.removeItem(atPath: dataFile)
+                }
+                
+                if fileManager.createFile(atPath: dataFile, contents: imageData) {
+                    return URL(fileURLWithPath: dataFile)
+                }
+            }
+        }
+        
+        return nil
+    }
 }
