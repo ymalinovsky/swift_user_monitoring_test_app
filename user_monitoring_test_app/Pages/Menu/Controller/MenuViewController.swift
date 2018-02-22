@@ -8,34 +8,68 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var photoImageView: UIImageView!
+    
+    @IBOutlet weak var userTitleLabel: UILabel!
+    
+    let menuRows = ["Photo"]
+    
     var menuCellIdentifier = "menuCell"
+    
+    var helper: Menu!
+    
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        imagePicker.delegate = self
+        
+        helper = Menu(controller: self)
+        
+        userTitleLabel.text = currentUser
     }
 
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return menuRows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: menuCellIdentifier)!
         
-        cell.textLabel?.text = "ATATA!!!"
+        cell.textLabel?.text = menuRows[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        switch indexPath.row {
+        case 0: helper.gerCameraPopup()
+        default: break
+        }
+    }
+    
+    // MARK:  UIImagePickerControllerDelegate
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        photoImageView.contentMode = .scaleAspectFit
+        photoImageView.image = chosenImage
+        
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }
