@@ -101,4 +101,9 @@ class Menu {
         
         return nil
     }
+    
+    func setProfileImage(image: UIImage) {
+        controller.profileImageView.image = image
+        controller.profileImageView.layer.borderColor = UIColor.lightGray.cgColor
+    }
 }

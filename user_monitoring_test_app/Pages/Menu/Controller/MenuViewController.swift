@@ -37,8 +37,24 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         userTitleLabel.text = currentUser
         
         helper.prepareProfileImageView()
+        
+        firebaseStorage.downloadProfileImage(userID: currentUser)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(profileImageDownloadCompletedSuccessfully), name: .profileImageDownloadCompletedSuccessfully, object: nil)
     }
 
+    @objc func profileImageDownloadCompletedSuccessfully(notification: NSNotification) {
+        if let notificationData = notification.userInfo?.first?.value {
+            let data = notificationData as! [String: String]
+            
+            if let profileImageFilePath = data["profileImageFilePath"] {
+                if let profileImage = UIImage(contentsOfFile: profileImageFilePath) {
+                    helper.setProfileImage(image: profileImage)
+                }
+            }
+        }
+    }
+    
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,9 +81,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        let cropedChosenImage = resizeImage(image: chosenImage, toSize: CGSize(width: profileImageView.frame.size.width, height: profileImageView.frame.size.height))
-        profileImageView.image = cropedChosenImage
-        profileImageView.layer.borderColor = UIColor.lightGray.cgColor
+        let resizedChosenImage = resizeImage(image: chosenImage, toSize: CGSize(width: profileImageView.frame.size.width, height: profileImageView.frame.size.height))
+        helper.setProfileImage(image: resizedChosenImage)
         
         if let filePath = helper.getProfileImageURLPath() {
             firebaseStorage.uploadProfileImage(filePath: filePath, userID: currentUser)
