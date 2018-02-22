@@ -13,11 +13,13 @@ class GoogleMapsViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     
-    var zoomLevel: Float = 6.0
+    var zoomLevel: Float = 15.0
     
     var observedUser: MonitoringUser!
     
     let marker = GMSMarker()
+    
+    var helper: GoogleMaps!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +28,28 @@ class GoogleMapsViewController: UIViewController {
         
         updateGoogleMapMarker()
         
+        firebaseStorage.downloadProfileImage(userID: observedUser.userID)
+        
+        helper = GoogleMaps(controller: self)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(googleMapsVCMarkerMustBeReload), name: .googleMapsVCMarkerMustBeReload, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(profileImageDownloadCompletedSuccessfully), name: .profileImageDownloadCompletedSuccessfully, object: nil)
     }
     
     @objc func googleMapsVCMarkerMustBeReload(notification: NSNotification) {
         updateGoogleMapMarker()
+    }
+    
+    @objc func profileImageDownloadCompletedSuccessfully(notification: NSNotification) {
+        if let notificationData = notification.userInfo?.first?.value {
+            let data = notificationData as! [String: NSDictionary]
+            
+            if let profileImageFilePath = data[observedUser.userID]?["profileImageFilePath"] {
+                if let profileImage = UIImage(contentsOfFile: profileImageFilePath as! String) {
+                    marker.icon = helper.getMarkerProfileImage(profileImage: profileImage)
+                }
+            }
+        }
     }
     
     func updateGoogleMapMarker() {

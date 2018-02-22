@@ -54,6 +54,16 @@ extension UIApplication {
     }
 }
 
+extension UIImage {
+    convenience init(view: UIView) {
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0)
+        view.layer.render(in:UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.init(cgImage: image!.cgImage!)
+    }
+}
+
 func getValidUserID(userID: String) -> String {
     return userID.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.alphanumerics)!
 }
