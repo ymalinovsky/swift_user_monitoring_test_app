@@ -17,6 +17,16 @@ class Menu {
         self.controller = controller
     }
     
+    func prepareProfileImageView() {
+        controller.profileImageView.image = UIImage(named: "profile")
+        
+        controller.profileImageView.layer.borderWidth = 1
+        controller.profileImageView.layer.masksToBounds = false
+        controller.profileImageView.layer.borderColor = UIColor.clear.cgColor
+        controller.profileImageView.layer.cornerRadius = controller.profileImageView.frame.height / 2
+        controller.profileImageView.clipsToBounds = true
+    }
+    
     func gerCameraPopup() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         

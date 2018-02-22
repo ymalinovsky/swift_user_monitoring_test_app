@@ -12,7 +12,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var userTitleLabel: UILabel!
     
@@ -35,6 +35,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         helper = Menu(controller: self)
         
         userTitleLabel.text = currentUser
+        
+        helper.prepareProfileImageView()
     }
 
     // MARK: UITableViewDataSource
@@ -63,8 +65,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        photoImageView.contentMode = .scaleAspectFit
-        photoImageView.image = chosenImage
+        profileImageView.image = chosenImage
+        profileImageView.layer.borderColor = UIColor.lightGray.cgColor
         
         dismiss(animated: true)
     }
