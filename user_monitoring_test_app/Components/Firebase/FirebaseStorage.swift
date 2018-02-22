@@ -41,7 +41,7 @@ class FirebaseStorage {
             let downloadTask = storageRef.child(getValidUserID(userID: userID)).child("profile.png").write(toFile: URL(fileURLWithPath: dataFile))
             
             downloadTask.observe(.success) { snapshot in
-                NotificationCenter.default.post(name: .profileImageDownloadCompletedSuccessfully, object: nil, userInfo: [userID: ["profileImageFilePath": dataFile]])
+                NotificationCenter.default.post(name: .profileImageDownloadCompletedSuccessfully, object: nil, userInfo: [userID: [userID: ["profileImageFilePath": dataFile]]])
             }
         }
     }

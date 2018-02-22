@@ -45,10 +45,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @objc func profileImageDownloadCompletedSuccessfully(notification: NSNotification) {
         if let notificationData = notification.userInfo?.first?.value {
-            let data = notificationData as! [String: String]
+            let data = notificationData as! [String: NSDictionary]
             
-            if let profileImageFilePath = data["profileImageFilePath"] {
-                if let profileImage = UIImage(contentsOfFile: profileImageFilePath) {
+            if let profileImageFilePath = data[currentUser]?["profileImageFilePath"] {
+                if let profileImage = UIImage(contentsOfFile: profileImageFilePath as! String) {
                     helper.setProfileImage(image: profileImage)
                 }
             }
