@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleMaps
 
 class GoogleMaps {
     
@@ -31,5 +32,21 @@ class GoogleMaps {
         profileImageView.clipsToBounds = true
         
         return UIImage(view: profileImageView)
+    }
+    
+    func updateGoogleMapMarker() {
+        if let userIndex = fullUsersList.index(where: { $0.userID == controller.observedUser.userID}) {
+            if let latitude = fullUsersList[userIndex].latitude, let longitude = fullUsersList[userIndex].longitude {
+                self.putMarkerToGoogleMap(latitude: latitude, longitude: longitude)
+            }
+        }
+    }
+    
+    func putMarkerToGoogleMap(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        controller.marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        controller.marker.map = controller.mapView
+        
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: controller.zoomLevel)
+        controller.mapView.animate(to: camera)
     }
 }

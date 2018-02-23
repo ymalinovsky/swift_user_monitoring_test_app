@@ -24,20 +24,21 @@ class GoogleMapsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        helper = GoogleMaps(controller: self)
+        
         mapView.settings.compassButton = true
         
-        updateGoogleMapMarker()
+        helper.updateGoogleMapMarker()
+        marker.icon = UIImage(named: "dot")
         
         firebaseStorage.downloadProfileImage(userID: observedUser.userID)
-        
-        helper = GoogleMaps(controller: self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(googleMapsVCMarkerMustBeReload), name: .googleMapsVCMarkerMustBeReload, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileImageDownloadCompletedSuccessfully), name: .profileImageDownloadCompletedSuccessfully, object: nil)
     }
     
     @objc func googleMapsVCMarkerMustBeReload(notification: NSNotification) {
-        updateGoogleMapMarker()
+        helper.updateGoogleMapMarker()
     }
     
     @objc func profileImageDownloadCompletedSuccessfully(notification: NSNotification) {
@@ -51,24 +52,6 @@ class GoogleMapsViewController: UIViewController {
             }
         }
     }
-    
-    func updateGoogleMapMarker() {
-        if let userIndex = fullUsersList.index(where: { $0.userID == observedUser.userID}) {
-            if let latitude = fullUsersList[userIndex].latitude, let longitude = fullUsersList[userIndex].longitude {
-                putMarkerToGoogleMap(latitude: latitude, longitude: longitude)
-            }
-        }
-    }
-    
-    func putMarkerToGoogleMap(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        marker.icon = UIImage(named: "dot")
-        marker.map = mapView
-        
-        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: zoomLevel)
-        mapView.animate(to: camera)
-    }
-    
 }
 
 
