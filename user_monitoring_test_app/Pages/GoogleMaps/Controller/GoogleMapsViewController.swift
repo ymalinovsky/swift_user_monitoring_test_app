@@ -33,6 +33,8 @@ class GoogleMapsViewController: UIViewController {
         
         firebaseStorage.downloadProfileImage(userID: observedUser.userID)
         
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: helper, action: #selector(helper.addGeofencingGroundOverlay))
+        
         NotificationCenter.default.addObserver(self, selector: #selector(googleMapsVCMarkerMustBeReload), name: .googleMapsVCMarkerMustBeReload, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileImageDownloadCompletedSuccessfully), name: .profileImageDownloadCompletedSuccessfully, object: nil)
     }
