@@ -12,7 +12,7 @@ import GoogleMaps
 
 class GoogleMaps {
     
-    var controller: GoogleMapsViewController!
+    var controller: GoogleMapsViewController
     
     init(controller: GoogleMapsViewController) {
         self.controller = controller

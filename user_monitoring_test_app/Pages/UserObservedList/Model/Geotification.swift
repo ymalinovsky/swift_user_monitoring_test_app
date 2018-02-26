@@ -14,12 +14,13 @@ enum EventType: String {
     case onExit = "On Exit"
 }
 
-class Geotification {
-    var coordinate: CLLocationCoordinate2D
-    var radius: CLLocationDistance
-    var identifier: String
-    var note: String
-    var eventType: EventType
+struct Geotification {
+    let latitude: CLLocationDegrees
+    let longitude: CLLocationDegrees
+    let radius: Double
+    let identifier: String
+    let note: String
+    let eventType: EventType
     
     var title: String? {
         if note.isEmpty {
@@ -33,8 +34,9 @@ class Geotification {
         return "Radius: \(radius)m - \(eventTypeString)"
     }
     
-    init(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, identifier: String, note: String, eventType: EventType) {
-        self.coordinate = coordinate
+    init(latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double, identifier: String, note: String, eventType: EventType) {
+        self.latitude = latitude
+        self.longitude = longitude
         self.radius = radius
         self.identifier = identifier
         self.note = note

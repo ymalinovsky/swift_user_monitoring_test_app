@@ -408,6 +408,9 @@
                                 <rect key="frame" x="0.0" y="97" width="375" height="432"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot" translatesAutoresizingMaskIntoConstraints="NO" id="1Y9-yd-1pg">
+                                <rect key="frame" x="177" y="303" width="20" height="20"/>
+                            </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="x5w-sb-6Yy">
                                 <rect key="frame" x="16" y="45" width="343" height="28"/>
                                 <constraints>
@@ -425,7 +428,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubV-jH-4eC">
-                                <rect key="frame" x="16" y="624" width="46.5" height="18"/>
+                                <rect key="frame" x="16" y="623" width="46.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -449,9 +452,11 @@
                             <constraint firstItem="XWi-Ue-6es" firstAttribute="trailing" secondItem="x5w-sb-6Yy" secondAttribute="trailing" constant="16" id="3ZF-Hv-RZA"/>
                             <constraint firstItem="x5w-sb-6Yy" firstAttribute="top" secondItem="XWi-Ue-6es" secondAttribute="top" constant="25" id="4Oz-9z-RYr"/>
                             <constraint firstItem="STi-Qf-d7l" firstAttribute="centerY" secondItem="lib-hf-wIn" secondAttribute="centerY" id="5dV-va-HDI"/>
+                            <constraint firstItem="1Y9-yd-1pg" firstAttribute="centerX" secondItem="mj7-mk-UAm" secondAttribute="centerX" id="6w5-Bp-0av"/>
                             <constraint firstAttribute="bottom" secondItem="EVP-38-Qra" secondAttribute="bottom" constant="20" symbolic="YES" id="99A-mp-aHc"/>
                             <constraint firstItem="lib-hf-wIn" firstAttribute="leading" secondItem="STi-Qf-d7l" secondAttribute="trailing" constant="18" id="9a6-GH-knY"/>
                             <constraint firstItem="EVP-38-Qra" firstAttribute="top" secondItem="lib-hf-wIn" secondAttribute="bottom" constant="33" id="Ktt-VU-nPG"/>
+                            <constraint firstItem="1Y9-yd-1pg" firstAttribute="centerY" secondItem="mj7-mk-UAm" secondAttribute="centerY" id="MKs-lt-mUb"/>
                             <constraint firstItem="STi-Qf-d7l" firstAttribute="trailing" secondItem="ubV-jH-4eC" secondAttribute="trailing" id="Osm-NQ-Zam"/>
                             <constraint firstItem="lib-hf-wIn" firstAttribute="leading" secondItem="EVP-38-Qra" secondAttribute="leading" id="PLx-1O-2Db"/>
                             <constraint firstItem="x5w-sb-6Yy" firstAttribute="leading" secondItem="STi-Qf-d7l" secondAttribute="leading" id="Qc5-e8-ueU"/>
@@ -467,7 +472,10 @@
                         <viewLayoutGuide key="safeArea" id="XWi-Ue-6es"/>
                     </view>
                     <connections>
+                        <outlet property="eventTypeSegmentedControl" destination="x5w-sb-6Yy" id="tHc-U6-Izp"/>
                         <outlet property="mapView" destination="mj7-mk-UAm" id="2vJ-z9-sLT"/>
+                        <outlet property="noteTextField" destination="EVP-38-Qra" id="FBW-C0-o9a"/>
+                        <outlet property="radiusTextField" destination="lib-hf-wIn" id="aR0-jy-0df"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3o-i5-8N1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -527,6 +535,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dot" width="20" height="20"/>
         <image name="hamburgerMenu" width="20" height="20"/>
     </resources>
 </document>
