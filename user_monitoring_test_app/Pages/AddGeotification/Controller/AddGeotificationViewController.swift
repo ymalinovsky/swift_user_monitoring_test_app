@@ -1,0 +1,18 @@
+//
+//  AddGeotificationViewController.swift
+//  user_monitoring_test_app
+//
+//  Created by Yan Malinovsky on 26.02.2018.
+//  Copyright © 2018 Yan Malinovsky. All rights reserved.
+//
+
+import UIKit
+
+class AddGeotificationViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+
+}

@@ -21,6 +21,8 @@ class GoogleMapsViewController: UIViewController {
     
     var helper: GoogleMaps!
     
+    let addGeotificationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addGeotificationViewController") as! AddGeotificationViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +35,7 @@ class GoogleMapsViewController: UIViewController {
         
         firebaseStorage.downloadProfileImage(userID: observedUser.userID)
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: helper, action: #selector(helper.addGeofencingGroundOverlay))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addGeofencing))
         
         NotificationCenter.default.addObserver(self, selector: #selector(googleMapsVCMarkerMustBeReload), name: .googleMapsVCMarkerMustBeReload, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileImageDownloadCompletedSuccessfully), name: .profileImageDownloadCompletedSuccessfully, object: nil)
@@ -53,6 +55,10 @@ class GoogleMapsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func addGeofencing() {
+        navigationController?.pushViewController(addGeotificationVC, animated: true)
     }
 }
 

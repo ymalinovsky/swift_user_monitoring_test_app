@@ -396,6 +396,33 @@
             </objects>
             <point key="canvasLocation" x="604" y="-609.44527736131943"/>
         </scene>
+        <!--Add Geotification View Controller-->
+        <scene sceneID="fbK-jf-a0F">
+            <objects>
+                <viewController storyboardIdentifier="addGeotificationViewController" id="jhZ-fU-cjU" customClass="AddGeotificationViewController" customModule="user_monitoring_test_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r6q-lq-dwB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj7-mk-UAm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.010106783859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mj7-mk-UAm" firstAttribute="leading" secondItem="XWi-Ue-6es" secondAttribute="leading" id="4xF-Zs-Ol2"/>
+                            <constraint firstItem="mj7-mk-UAm" firstAttribute="trailing" secondItem="XWi-Ue-6es" secondAttribute="trailing" id="cK1-QY-oLs"/>
+                            <constraint firstItem="mj7-mk-UAm" firstAttribute="top" secondItem="r6q-lq-dwB" secondAttribute="top" id="tCz-4b-s3d"/>
+                            <constraint firstItem="mj7-mk-UAm" firstAttribute="bottom" secondItem="XWi-Ue-6es" secondAttribute="bottom" id="vDZ-Sr-xJR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XWi-Ue-6es"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3o-i5-8N1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1943.2" y="846.9265367316342"/>
+        </scene>
         <!--Assign User Observe To User View Controller-->
         <scene sceneID="BP3-lH-0wz">
             <objects>
