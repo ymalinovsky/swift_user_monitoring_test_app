@@ -58,6 +58,7 @@ class GoogleMapsViewController: UIViewController {
     }
     
     @objc func addGeofencing() {
+        addGeotificationVC.observedUser = observedUser
         navigationController?.pushViewController(addGeotificationVC, animated: true)
     }
 }

@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class AddGeotificationViewController: UIViewController {
 
+    @IBOutlet weak var mapView: GMSMapView!
+    
+    var observedUser: MonitoringUser!
+    
+    let marker = GMSMarker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

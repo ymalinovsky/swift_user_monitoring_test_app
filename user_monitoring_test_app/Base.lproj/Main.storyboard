@@ -404,20 +404,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj7-mk-UAm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.010106783859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj7-mk-UAm" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="97" width="375" height="432"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="x5w-sb-6Yy">
+                                <rect key="frame" x="16" y="45" width="343" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="htg-fR-72A"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Upon Entry"/>
+                                    <segment title="Upon Exit"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STi-Qf-d7l">
+                                <rect key="frame" x="16" y="560" width="46.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubV-jH-4eC">
+                                <rect key="frame" x="16" y="624" width="46.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lib-hf-wIn">
+                                <rect key="frame" x="80.5" y="554" width="278.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EVP-38-Qra">
+                                <rect key="frame" x="80.5" y="617" width="278.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mj7-mk-UAm" firstAttribute="leading" secondItem="XWi-Ue-6es" secondAttribute="leading" id="4xF-Zs-Ol2"/>
-                            <constraint firstItem="mj7-mk-UAm" firstAttribute="trailing" secondItem="XWi-Ue-6es" secondAttribute="trailing" id="cK1-QY-oLs"/>
-                            <constraint firstItem="mj7-mk-UAm" firstAttribute="top" secondItem="r6q-lq-dwB" secondAttribute="top" id="tCz-4b-s3d"/>
-                            <constraint firstItem="mj7-mk-UAm" firstAttribute="bottom" secondItem="XWi-Ue-6es" secondAttribute="bottom" id="vDZ-Sr-xJR"/>
+                            <constraint firstItem="x5w-sb-6Yy" firstAttribute="trailing" secondItem="lib-hf-wIn" secondAttribute="trailing" id="1YH-Ze-dJ5"/>
+                            <constraint firstItem="XWi-Ue-6es" firstAttribute="trailing" secondItem="x5w-sb-6Yy" secondAttribute="trailing" constant="16" id="3ZF-Hv-RZA"/>
+                            <constraint firstItem="x5w-sb-6Yy" firstAttribute="top" secondItem="XWi-Ue-6es" secondAttribute="top" constant="25" id="4Oz-9z-RYr"/>
+                            <constraint firstItem="STi-Qf-d7l" firstAttribute="centerY" secondItem="lib-hf-wIn" secondAttribute="centerY" id="5dV-va-HDI"/>
+                            <constraint firstAttribute="bottom" secondItem="EVP-38-Qra" secondAttribute="bottom" constant="20" symbolic="YES" id="99A-mp-aHc"/>
+                            <constraint firstItem="lib-hf-wIn" firstAttribute="leading" secondItem="STi-Qf-d7l" secondAttribute="trailing" constant="18" id="9a6-GH-knY"/>
+                            <constraint firstItem="EVP-38-Qra" firstAttribute="top" secondItem="lib-hf-wIn" secondAttribute="bottom" constant="33" id="Ktt-VU-nPG"/>
+                            <constraint firstItem="STi-Qf-d7l" firstAttribute="trailing" secondItem="ubV-jH-4eC" secondAttribute="trailing" id="Osm-NQ-Zam"/>
+                            <constraint firstItem="lib-hf-wIn" firstAttribute="leading" secondItem="EVP-38-Qra" secondAttribute="leading" id="PLx-1O-2Db"/>
+                            <constraint firstItem="x5w-sb-6Yy" firstAttribute="leading" secondItem="STi-Qf-d7l" secondAttribute="leading" id="Qc5-e8-ueU"/>
+                            <constraint firstItem="lib-hf-wIn" firstAttribute="top" secondItem="mj7-mk-UAm" secondAttribute="bottom" constant="25" id="Sya-gl-uA3"/>
+                            <constraint firstItem="STi-Qf-d7l" firstAttribute="leading" secondItem="ubV-jH-4eC" secondAttribute="leading" id="Wx0-rP-G8p"/>
+                            <constraint firstItem="x5w-sb-6Yy" firstAttribute="leading" secondItem="r6q-lq-dwB" secondAttribute="leadingMargin" id="gwP-VY-mJV"/>
+                            <constraint firstItem="ubV-jH-4eC" firstAttribute="centerY" secondItem="EVP-38-Qra" secondAttribute="centerY" id="t6X-d4-Tyo"/>
+                            <constraint firstAttribute="trailing" secondItem="mj7-mk-UAm" secondAttribute="trailing" id="tgh-K1-Enl"/>
+                            <constraint firstItem="mj7-mk-UAm" firstAttribute="top" secondItem="x5w-sb-6Yy" secondAttribute="bottom" constant="25" id="vut-Ee-dHe"/>
+                            <constraint firstItem="lib-hf-wIn" firstAttribute="trailing" secondItem="EVP-38-Qra" secondAttribute="trailing" id="wQq-7F-gvj"/>
+                            <constraint firstItem="mj7-mk-UAm" firstAttribute="leading" secondItem="r6q-lq-dwB" secondAttribute="leading" id="wcS-Y2-iAo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XWi-Ue-6es"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="mj7-mk-UAm" id="2vJ-z9-sLT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3o-i5-8N1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
