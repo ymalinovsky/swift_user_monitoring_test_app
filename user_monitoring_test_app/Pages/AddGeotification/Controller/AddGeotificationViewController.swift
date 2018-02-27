@@ -18,8 +18,10 @@ class AddGeotificationViewController: UIViewController {
     @IBOutlet weak var noteTextField: UITextField!
     
     var observedUser: MonitoringUser!
+    var zoomLevel: Float!
     
     let marker = GMSMarker()
+    var observedUserMarker: GMSMarker!
     
     var helper: AddGeotification!
     
@@ -27,6 +29,8 @@ class AddGeotificationViewController: UIViewController {
         super.viewDidLoad()
         
         helper = AddGeotification(controller: self)
+        
+        helper.updateGoogleMapMarker()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addGeotification))
     }
@@ -39,6 +43,7 @@ class AddGeotificationViewController: UIViewController {
         let identifier = NSUUID().uuidString
         let note = noteTextField.text ?? ""
         let eventType: EventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? .onEntry : .onExit
-        helper.addGeotification(latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
+        
+        firebaseDatabase.addGeotificationToObservingUser(userID: currentUser, observedUserID: observedUser.userID, latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
     }
 }

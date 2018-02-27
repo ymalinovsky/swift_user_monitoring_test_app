@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import CoreLocation
+import GoogleMaps
 
 class AddGeotification {
     
@@ -18,7 +18,15 @@ class AddGeotification {
         self.controller = controller
     }
     
-    func addGeotification(latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double, identifier: String, note: String, eventType: EventType) {
-    
+    func updateGoogleMapMarker() {
+        if let userIndex = fullUsersList.index(where: { $0.userID == controller.observedUser.userID}) {
+            if let latitude = fullUsersList[userIndex].latitude, let longitude = fullUsersList[userIndex].longitude {
+                controller.observedUserMarker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                controller.observedUserMarker.map = controller.mapView
+                
+                let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: controller.zoomLevel)
+                controller.mapView.animate(to: camera)
+            }
+        }
     }
 }

@@ -30,7 +30,6 @@ class GoogleMapsViewController: UIViewController {
         
         mapView.settings.compassButton = true
         
-        helper.updateGoogleMapMarker()
         marker.icon = UIImage(named: "dot")
         
         firebaseStorage.downloadProfileImage(userID: observedUser.userID)
@@ -39,6 +38,10 @@ class GoogleMapsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(googleMapsVCMarkerMustBeReload), name: .googleMapsVCMarkerMustBeReload, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileImageDownloadCompletedSuccessfully), name: .profileImageDownloadCompletedSuccessfully, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        helper.updateGoogleMapMarker()
     }
     
     @objc func googleMapsVCMarkerMustBeReload(notification: NSNotification) {
@@ -59,6 +62,8 @@ class GoogleMapsViewController: UIViewController {
     
     @objc func addGeofencing() {
         addGeotificationVC.observedUser = observedUser
+        addGeotificationVC.observedUserMarker = marker
+        addGeotificationVC.zoomLevel = zoomLevel
         navigationController?.pushViewController(addGeotificationVC, animated: true)
     }
 }

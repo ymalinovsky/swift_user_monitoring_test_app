@@ -50,7 +50,7 @@ class FirebaseRealtimeDatabase {
     func saveUserLocations(userID: String, location: CLLocation) {
         let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID))
         
-        let coordinates = ["latitude" : location.coordinate.latitude, "longitude" : location.coordinate.longitude]
+        let coordinates = ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
         
         userDB.child("coordinates").setValue(coordinates) { (error, ref) in
             if error != nil {
@@ -82,6 +82,18 @@ class FirebaseRealtimeDatabase {
             }
             
             NotificationCenter.default.post(name: .whoObservingCurrentUserVCTableViewMustBeReload, object: nil, userInfo: nil)
+        }
+    }
+    
+    func addGeotificationToObservingUser(userID: String, observedUserID: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double, identifier: String, note: String, eventType: EventType) {
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("observedUsers").child(getValidUserID(userID: observedUserID)).child("geotifications")
+        
+        let geotification = ["latitude": String(describing: latitude), "longitude": String(describing: longitude), "radius": String(describing: radius), "note": note , "eventType": String(describing: eventType)]
+        
+        userDB.child(identifier).setValue(geotification) { (error, ref) in
+            if error != nil {
+                print(error!)
+            }
         }
     }
 }
