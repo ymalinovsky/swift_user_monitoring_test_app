@@ -46,13 +46,14 @@ class FirebaseRealtimeDatabaseObserve {
         observedUsersDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
             
-            let userID = userData["id"] as! String
+            let observedUserID = userData["id"] as! String
             
-            if userID != currentUser {
-                if let index = fullUsersList.index(where: { $0.userID == userID}) {
-                    self.userCoordinatesObserver(userID: userID)
+            if observedUserID != currentUser {
+                if let index = fullUsersList.index(where: { $0.userID == observedUserID}) {
+                    self.userCoordinatesObserver(userID: observedUserID)
+                    self.observingUserGeotificationObserver(userID: userID, observedUserID: observedUserID)
                     
-                    observedUsersListByCurrentUser.append(MonitoringUser(userID: userID, latitude: fullUsersList[index].latitude, longitude: fullUsersList[index].longitude))
+                    observedUsersListByCurrentUser.append(MonitoringUser(userID: observedUserID, latitude: fullUsersList[index].latitude, longitude: fullUsersList[index].longitude))
                     NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
                 }
             }
@@ -94,6 +95,17 @@ class FirebaseRealtimeDatabaseObserve {
             }
             
             NotificationCenter.default.post(name: .googleMapsVCMarkerMustBeReload, object: nil, userInfo: nil)
+        })
+    }
+    
+    func observingUserGeotificationObserver(userID: String, observedUserID: String) {
+        let db = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("observedUsers").child(getValidUserID(userID: observedUserID)).child("geotifications")
+        
+        db.observe(.childAdded, with: { (snapshot) -> Void in
+            if let userIndex = fullUsersList.index(where: { $0.userID == userID}) {
+                print(userIndex)
+//                let geotification = Geotification(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>, radius: <#T##Double#>, identifier: <#T##String#>, note: <#T##String#>, eventType: <#T##EventType#>)
+            }
         })
     }
 }
