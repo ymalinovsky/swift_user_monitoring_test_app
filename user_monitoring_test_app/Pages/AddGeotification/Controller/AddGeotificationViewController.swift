@@ -39,7 +39,7 @@ class AddGeotificationViewController: UIViewController {
         let latitude = mapView.camera.target.latitude
         let longitude = mapView.camera.target.longitude
         
-        let radius = Double(radiusTextField.text!) ?? 0
+        let radius = Double(radiusTextField.text!) ?? 100
         let identifier = NSUUID().uuidString
         let note = noteTextField.text ?? ""
         let eventType: EventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? .onEntry : .onExit

@@ -38,7 +38,12 @@ class GoogleMaps {
         if let userIndex = fullUsersList.index(where: { $0.userID == controller.observedUser.userID}) {
             if let latitude = fullUsersList[userIndex].latitude, let longitude = fullUsersList[userIndex].longitude {
                 self.putMarkerToGoogleMap(latitude: latitude, longitude: longitude)
-                self.addGeofencingCirlce(latitude: latitude, longitude: longitude)
+                
+                if let geotifications = controller.observedUser.geotifications {
+                    for geotification in geotifications {
+                        self.addGeofencingCirlce(latitude: geotification.latitude, longitude: geotification.longitude, radius: geotification.radius)
+                    }
+                }
             }
         }
     }
@@ -51,10 +56,10 @@ class GoogleMaps {
         controller.mapView.animate(to: camera)
     }
     
-    func addGeofencingCirlce(latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double = 10000) {
+    func addGeofencingCirlce(latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double) {
         let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let cirlce = GMSCircle(position: position, radius: radius)
-        cirlce.fillColor = UIColor.blue.withAlphaComponent(0.1)
-        cirlce.map = controller.mapView
+        let circle = GMSCircle(position: position, radius: radius)
+        circle.fillColor = UIColor.blue.withAlphaComponent(0.1)
+        circle.map = controller.mapView
     }
 }

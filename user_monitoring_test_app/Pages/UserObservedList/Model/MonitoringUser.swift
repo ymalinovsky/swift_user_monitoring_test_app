@@ -13,12 +13,12 @@ struct MonitoringUser {
     let userID: String
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
-    var geotification: [Geotification]?
+    var geotifications: [Geotification]?
     
-    init(userID: String, latitude: CLLocationDegrees?, longitude: CLLocationDegrees?, geotification: [Geotification]? = nil) {
+    init(userID: String, latitude: CLLocationDegrees?, longitude: CLLocationDegrees?, geotifications: [Geotification]? = nil) {
         self.userID = userID
         self.latitude = latitude
         self.longitude = longitude
-        self.geotification = geotification
+        self.geotifications = geotifications
     }
 }

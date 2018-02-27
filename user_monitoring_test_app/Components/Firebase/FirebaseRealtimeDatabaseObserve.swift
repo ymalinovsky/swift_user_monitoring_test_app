@@ -102,9 +102,24 @@ class FirebaseRealtimeDatabaseObserve {
         let db = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("observedUsers").child(getValidUserID(userID: observedUserID)).child("geotifications")
         
         db.observe(.childAdded, with: { (snapshot) -> Void in
-            if let userIndex = fullUsersList.index(where: { $0.userID == userID}) {
-                print(userIndex)
-//                let geotification = Geotification(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>, radius: <#T##Double#>, identifier: <#T##String#>, note: <#T##String#>, eventType: <#T##EventType#>)
+            if let userIndex = observedUsersListByCurrentUser.index(where: { $0.userID == observedUserID}) {
+                let geotificationData = snapshot.value as! NSDictionary
+                
+                let identifier = snapshot.key
+                let latitude = CLLocationDegrees(geotificationData["latitude"] as! String)!
+                let longitude = CLLocationDegrees(geotificationData["longitude"] as! String)!
+                let radius = Double(geotificationData["radius"] as! String)!
+                let note = geotificationData["note"] as! String
+                
+                 let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
+                
+                let geotification = Geotification(latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
+                
+                if observedUsersListByCurrentUser[userIndex].geotifications != nil {
+                    observedUsersListByCurrentUser[userIndex].geotifications!.append(geotification)
+                } else {
+                    observedUsersListByCurrentUser[userIndex].geotifications = [geotification]
+                }
             }
         })
     }
