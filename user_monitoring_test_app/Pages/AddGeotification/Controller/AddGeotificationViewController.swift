@@ -31,7 +31,9 @@ class AddGeotificationViewController: UIViewController {
         helper = AddGeotification(controller: self)
         
         helper.updateGoogleMapMarker()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addGeotification))
     }
 
@@ -45,5 +47,7 @@ class AddGeotificationViewController: UIViewController {
         let eventType: EventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? .onEntry : .onExit
         
         firebaseDatabase.addGeotificationToObservingUser(userID: currentUser, observedUserID: observedUser.userID, latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
+        
+        navigationController?.popViewController(animated: true)
     }
 }

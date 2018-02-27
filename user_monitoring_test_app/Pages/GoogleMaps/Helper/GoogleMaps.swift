@@ -37,11 +37,17 @@ class GoogleMaps {
     func updateGoogleMapMarker() {
         if let userIndex = fullUsersList.index(where: { $0.userID == controller.observedUser.userID}) {
             if let latitude = fullUsersList[userIndex].latitude, let longitude = fullUsersList[userIndex].longitude {
+                controller.mapView.clear()
+                
                 self.putMarkerToGoogleMap(latitude: latitude, longitude: longitude)
                 
-                if let geotifications = controller.observedUser.geotifications {
-                    for geotification in geotifications {
-                        self.addGeofencingCirlce(latitude: geotification.latitude, longitude: geotification.longitude, radius: geotification.radius)
+                if let userIndex = observedUsersListByCurrentUser.index(where: { $0.userID == controller.observedUser.userID}) {
+                    controller.observedUser = observedUsersListByCurrentUser[userIndex]
+                    
+                    if let geotifications = controller.observedUser.geotifications {
+                        for geotification in geotifications {
+                            self.addGeofencingCirlce(latitude: geotification.latitude, longitude: geotification.longitude, radius: geotification.radius)
+                        }
                     }
                 }
             }

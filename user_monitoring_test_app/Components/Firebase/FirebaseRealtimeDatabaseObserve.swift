@@ -120,6 +120,8 @@ class FirebaseRealtimeDatabaseObserve {
                 } else {
                     observedUsersListByCurrentUser[userIndex].geotifications = [geotification]
                 }
+                
+                NotificationCenter.default.post(name: .googleMapsVCMarkerMustBeReload, object: nil, userInfo: nil)
             }
         })
     }
