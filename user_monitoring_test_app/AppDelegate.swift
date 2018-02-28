@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         firebaseObserve.newUserObserver()
-        firebaseDatabase.initGeofencingEvents()
         
         if let currentUser = UserDefaults.standard.string(forKey: App.currentUserKeyForUserDefaults), let currentUserPassword = UserDefaults.standard.string(forKey: App.currentUserPasswordKeyForUserDefaults) {
             firebaseAuth.emailLogin(email: currentUser, password:currentUserPassword)

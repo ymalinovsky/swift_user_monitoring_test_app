@@ -86,11 +86,19 @@ class FirebaseRealtimeDatabase {
     }
     
     func addGeotificationToObservingUser(userID: String, observedUserID: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double, identifier: String, note: String, eventType: EventType) {
-        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("observedUsers").child(getValidUserID(userID: observedUserID)).child("geotifications")
-        
         let geotification = ["latitude": String(describing: latitude), "longitude": String(describing: longitude), "radius": String(describing: radius), "note": note , "eventType": String(describing: eventType)]
         
+        // Current User -> Observed Users -> Observed User -> Geotifications
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("observedUsers").child(getValidUserID(userID: observedUserID)).child("geotifications")
         userDB.child(identifier).setValue(geotification) { (error, ref) in
+            if error != nil {
+                print(error!)
+            }
+        }
+        
+        // Observed User -> Geotifications
+        let observedUser = Database.database().reference().child("users").child(getValidUserID(userID: observedUserID)).child("geotifications")
+        observedUser.child(identifier).setValue(geotification) { (error, ref) in
             if error != nil {
                 print(error!)
             }
