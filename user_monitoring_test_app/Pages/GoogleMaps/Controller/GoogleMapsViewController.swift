@@ -13,11 +13,12 @@ class GoogleMapsViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     
-    var zoomLevel: Float = 6.0
+    var zoomLevel: Float = 15.0
     
     var observedUser: MonitoringUser!
     
     let marker = GMSMarker()
+    var geotificationCircles = [GMSCircle]()
     
     var helper: GoogleMaps!
     

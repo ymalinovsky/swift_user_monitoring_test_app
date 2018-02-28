@@ -29,11 +29,10 @@ class AddGeotificationViewController: UIViewController {
         super.viewDidLoad()
         
         helper = AddGeotification(controller: self)
-        
-        helper.updateGoogleMapMarker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        helper.updateGoogleMapMarker()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addGeotification))
     }
     
