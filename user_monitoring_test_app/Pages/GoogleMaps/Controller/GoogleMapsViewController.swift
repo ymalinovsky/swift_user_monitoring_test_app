@@ -13,7 +13,7 @@ class GoogleMapsViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     
-    var zoomLevel: Float = 15.0
+    var zoomLevel: Float = 6.0
     
     var observedUser: MonitoringUser!
     
@@ -33,16 +33,13 @@ class GoogleMapsViewController: UIViewController {
         marker.icon = UIImage(named: "dot")
         
         helper.updateGoogleMapMarker()
+        
         firebaseStorage.downloadProfileImage(userID: observedUser.userID)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addGeofencing))
         
         NotificationCenter.default.addObserver(self, selector: #selector(googleMapsVCMarkerMustBeReload), name: .googleMapsVCMarkerMustBeReload, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileImageDownloadCompletedSuccessfully), name: .profileImageDownloadCompletedSuccessfully, object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        helper.updateGoogleMapMarker()
     }
     
     @objc func googleMapsVCMarkerMustBeReload(notification: NSNotification) {

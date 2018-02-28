@@ -36,6 +36,10 @@ class AddGeotificationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addGeotification))
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: .googleMapsVCMarkerMustBeReload, object: nil, userInfo: nil)
+    }
 
     @objc func addGeotification() {
         let latitude = mapView.camera.target.latitude
