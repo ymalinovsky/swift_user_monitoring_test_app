@@ -11,10 +11,11 @@ import UIKit
 import CoreLocation
 
 class Geofencing {
-    func getCircularRegion(withGeotification geotification: Geotification) -> CLCircularRegion {
+    private func getCircularRegion(withGeotification geotification: Geotification) -> CLCircularRegion {
         let center = CLLocationCoordinate2D(latitude: geotification.latitude, longitude: geotification.longitude)
         
-        let region = CLCircularRegion(center: center, radius: geotification.radius, identifier: geotification.identifier)
+        let clampedRadius = min(geotification.radius, appDelegate.locationManager.maximumRegionMonitoringDistance)
+        let region = CLCircularRegion(center: center, radius: clampedRadius, identifier: geotification.identifier)
 
         region.notifyOnEntry = (geotification.eventType == .onEntry)
         region.notifyOnExit = !region.notifyOnEntry

@@ -28,7 +28,9 @@ var usersListByCurrentUserObserving = [MonitoringUser]()
 
 var currentUser = String()
 
-var hamburgerMenu = HamburgerMenu()
+let hamburgerMenu = HamburgerMenu()
+
+let geofencing = Geofencing()
 
 extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
