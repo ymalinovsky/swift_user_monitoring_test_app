@@ -110,8 +110,7 @@ class FirebaseRealtimeDatabaseObserve {
                 let longitude = CLLocationDegrees(geotificationData["longitude"] as! String)!
                 let radius = Double(geotificationData["radius"] as! String)!
                 let note = geotificationData["note"] as! String
-                
-                 let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
+                let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
                 
                 let geotification = Geotification(latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
                 

@@ -96,4 +96,41 @@ class FirebaseRealtimeDatabase {
             }
         }
     }
+    
+    func initGeofencingEvents() {
+        let userDB = Database.database().reference().child("users")
+        
+        userDB.observeSingleEvent(of: .value) { (snapshot) in
+            let usersData = snapshot.value as! NSDictionary
+            
+            for userDataDictionary in usersData {
+                let userData = userDataDictionary.value as! NSDictionary
+                let userID = userData["id"] as! String
+                
+                if userData["observedUsers"] != nil {
+                    let observedUsers = userData["observedUsers"] as! NSDictionary
+                    for observedUserDictionary in observedUsers {
+                        let observedUserData = observedUserDictionary.value as! NSDictionary
+                        let observedUserID = observedUserData["id"] as! String
+                        
+                        if currentUser == observedUserID && observedUserData["geotifications"] != nil {
+                            let geotifications = observedUserData["geotifications"] as! NSDictionary
+                            for geotificationDictionary in geotifications {
+                                let geotificationData = geotificationDictionary.value as! NSDictionary
+                                
+                                let identifier = geotificationDictionary.key
+                                let latitude = CLLocationDegrees(geotificationData["latitude"] as! String)!
+                                let longitude = CLLocationDegrees(geotificationData["longitude"] as! String)!
+                                let radius = Double(geotificationData["radius"] as! String)!
+                                let note = geotificationData["note"] as! String
+                                let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
+                                
+                                print("ATATA!!!")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
