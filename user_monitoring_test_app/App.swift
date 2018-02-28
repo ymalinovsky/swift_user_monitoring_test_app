@@ -137,3 +137,10 @@ func resizeImage(image: UIImage, toSize: CGSize) -> UIImage {
     return newImage!
 }
 
+func showAlert(controller: UIViewController, withTitle title: String?, message: String?) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+    alert.addAction(action)
+    controller.present(alert, animated: true, completion: nil)
+}
+
