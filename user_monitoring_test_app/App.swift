@@ -8,11 +8,14 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 struct App {
     static let currentUserKeyForUserDefaults = "currentUserKey"
     static let currentUserPasswordKeyForUserDefaults = "currentUserPasswordKey"
 }
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 let firebaseAuth = FirebaseAuthentication()
 let firebaseDatabase = FirebaseRealtimeDatabase()
@@ -26,6 +29,46 @@ var usersListByCurrentUserObserving = [MonitoringUser]()
 var currentUser = String()
 
 var hamburgerMenu = HamburgerMenu()
+
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+//            handleEvent(forRegion: region)
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region is CLCircularRegion {
+//            handleEvent(forRegion: region)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            firebaseDatabase.saveUserLocations(userID: currentUser, location: location)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted:
+            print("Location access was restricted.")
+        case .denied:
+            print("User denied access to location.")
+        case .notDetermined:
+            print("Location status not determined.")
+        case .authorizedAlways:
+            print("Location status is OK always.")
+        case .authorizedWhenInUse:
+            print("Location status is OK when app in use.")
+        }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        print("Error: \(error)")
+    }
+}
 
 extension Notification.Name {
     static let loginSuccess = Notification.Name("loginSuccess")

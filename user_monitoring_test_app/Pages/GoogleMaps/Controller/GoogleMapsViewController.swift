@@ -32,6 +32,7 @@ class GoogleMapsViewController: UIViewController {
         
         marker.icon = UIImage(named: "dot")
         
+        helper.updateGoogleMapMarker()
         firebaseStorage.downloadProfileImage(userID: observedUser.userID)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addGeofencing))

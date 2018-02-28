@@ -15,7 +15,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyCeygKy2GbL_knck_jdeaYAD4AOmC1mdhQ")
@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let currentUser = UserDefaults.standard.string(forKey: App.currentUserKeyForUserDefaults), let currentUserPassword = UserDefaults.standard.string(forKey: App.currentUserPasswordKeyForUserDefaults) {
             firebaseAuth.emailLogin(email: currentUser, password:currentUserPassword)
         }
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
         
         return true
     }
