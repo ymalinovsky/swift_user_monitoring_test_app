@@ -51,6 +51,7 @@ class FirebaseRealtimeDatabaseObserve {
             if observedUserID != currentUser {
                 if let index = fullUsersList.index(where: { $0.userID == observedUserID}) {
                     self.userCoordinatesObserver(userID: observedUserID)
+                    self.userGeofencingObserver(userID: userID)
                     self.observingUserGeotificationObserver(userID: userID, observedUserID: observedUserID)
                     
                     observedUsersListByCurrentUser.append(MonitoringUser(userID: observedUserID, latitude: fullUsersList[index].latitude, longitude: fullUsersList[index].longitude))
@@ -121,6 +122,27 @@ class FirebaseRealtimeDatabaseObserve {
                 }
                 
                 NotificationCenter.default.post(name: .googleMapsVCMarkerMustBeReload, object: nil, userInfo: nil)
+            }
+        })
+    }
+    
+    func userGeofencingObserver(userID: String) {
+        let geofencingDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("geotifications")
+        
+        geofencingDB.observe(.childAdded, with: { (snapshot) -> Void in
+            let geotificationData = snapshot.value as! NSDictionary
+            
+            let identifier = snapshot.key
+            let latitude = CLLocationDegrees(geotificationData["latitude"] as! String)!
+            let longitude = CLLocationDegrees(geotificationData["longitude"] as! String)!
+            let radius = Double(geotificationData["radius"] as! String)!
+            let note = geotificationData["note"] as! String
+            let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
+            
+            let geotification = Geotification(latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
+            
+            if let topVC = UIApplication.topViewController() {
+                geofencing.startMonitoring(controller: topVC, geotification: geotification)
             }
         })
     }

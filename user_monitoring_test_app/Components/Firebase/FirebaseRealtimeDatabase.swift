@@ -86,7 +86,7 @@ class FirebaseRealtimeDatabase {
     }
     
     func addGeotificationToObservingUser(userID: String, observedUserID: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double, identifier: String, note: String, eventType: EventType) {
-        let geotification = ["latitude": String(describing: latitude), "longitude": String(describing: longitude), "radius": String(describing: radius), "note": note , "eventType": String(describing: eventType)]
+        let geotification = ["observedUserID": userID, "latitude": String(describing: latitude), "longitude": String(describing: longitude), "radius": String(describing: radius), "note": note , "eventType": String(describing: eventType)]
         
         // Current User -> Observed Users -> Observed User -> Geotifications
         let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("observedUsers").child(getValidUserID(userID: observedUserID)).child("geotifications")
@@ -101,47 +101,6 @@ class FirebaseRealtimeDatabase {
         observedUser.child(identifier).setValue(geotification) { (error, ref) in
             if error != nil {
                 print(error!)
-            }
-        }
-    }
-    
-    func initGeofencingEvents() {
-        let userDB = Database.database().reference().child("users")
-        
-        userDB.observeSingleEvent(of: .value) { (snapshot) in
-            let usersData = snapshot.value as! NSDictionary
-            
-            for userDataDictionary in usersData {
-                let userData = userDataDictionary.value as! NSDictionary
-                let userID = userData["id"] as! String
-                
-                if userData["observedUsers"] != nil {
-                    let observedUsers = userData["observedUsers"] as! NSDictionary
-                    for observedUserDictionary in observedUsers {
-                        let observedUserData = observedUserDictionary.value as! NSDictionary
-                        let observedUserID = observedUserData["id"] as! String
-                        
-                        if currentUser == observedUserID && observedUserData["geotifications"] != nil {
-                            let geotifications = observedUserData["geotifications"] as! NSDictionary
-                            for geotificationDictionary in geotifications {
-                                let geotificationData = geotificationDictionary.value as! NSDictionary
-                                
-                                let identifier = geotificationDictionary.key as! String
-                                let latitude = CLLocationDegrees(geotificationData["latitude"] as! String)!
-                                let longitude = CLLocationDegrees(geotificationData["longitude"] as! String)!
-                                let radius = Double(geotificationData["radius"] as! String)!
-                                let note = geotificationData["note"] as! String
-                                let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
-                                
-                                let geotification = Geotification(latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
-                                
-                                if let topVC = UIApplication.topViewController() {
-                                    geofencing.startMonitoring(controller: topVC, geotification: geotification)
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }

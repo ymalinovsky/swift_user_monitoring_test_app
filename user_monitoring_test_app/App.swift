@@ -35,11 +35,13 @@ let geofencing = Geofencing()
 extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
+            print("didEnterRegion")
 //            handleEvent(forRegion: region)
         }
     }
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region is CLCircularRegion {
+            print("didExitRegion")
 //            handleEvent(forRegion: region)
         }
     }
