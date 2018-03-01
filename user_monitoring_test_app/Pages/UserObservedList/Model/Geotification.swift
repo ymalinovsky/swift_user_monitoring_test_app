@@ -22,18 +22,6 @@ struct Geotification {
     let note: String
     let eventType: EventType
     
-    var title: String? {
-        if note.isEmpty {
-            return "No Note"
-        }
-        return note
-    }
-    
-    var subtitle: String? {
-        let eventTypeString = eventType.rawValue
-        return "Radius: \(radius)m - \(eventTypeString)"
-    }
-    
     init(latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double, identifier: String, note: String, eventType: EventType) {
         self.latitude = latitude
         self.longitude = longitude

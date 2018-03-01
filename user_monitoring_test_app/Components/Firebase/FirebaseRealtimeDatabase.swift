@@ -112,7 +112,10 @@ class FirebaseRealtimeDatabase {
             let preparedGeotificationData = firebaseHelper.prepareGeotificationData(geotificationData: geotificationData)
             
             let geofenceNotificationDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("geofenceNotification")
-            let geofenceNotification = ["observedUserID": preparedGeotificationData.observedUserID, "note": preparedGeotificationData.note]
+            let observedUserID = preparedGeotificationData.observedUserID
+            let messages = "User \(observedUserID): \(preparedGeotificationData.eventType.rawValue) Radius \(preparedGeotificationData.radius) m"
+            
+            let geofenceNotification = ["observedUserID": observedUserID, "messages": messages]
 
             geofenceNotificationDB.childByAutoId().setValue(geofenceNotification) { (error, ref) in
                 if error != nil {
