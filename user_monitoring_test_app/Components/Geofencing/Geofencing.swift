@@ -41,4 +41,38 @@ class Geofencing {
             appDelegate.locationManager.stopMonitoring(for: circularRegion)
         }
     }
+    
+    func handleGeofencingEvent(forRegion region: CLRegion, isEnterToRegion: Bool) {
+        let timestamp = Int(Date().timeIntervalSinceReferenceDate)
+        
+        if UserDefaults.standard.value(forKey: "geofencingTimestamp") != nil {
+            let geofencingTimestamp = UserDefaults.standard.integer(forKey: "geofencingTimestamp")
+            
+            if timestamp - geofencingTimestamp > 1 { // Geofence Bug in iOS: prevent duplicate calls for region monitoring.
+                UserDefaults.standard.set(timestamp, forKey: "geofencingTimestamp")
+                
+                if isEnterToRegion {
+                    self.didEnterRegion(forRegion: region)
+                } else {
+                    self.didExitRegion(forRegion: region)
+                }
+            }
+        } else {
+            UserDefaults.standard.set(timestamp, forKey: "geofencingTimestamp")
+
+            if isEnterToRegion {
+                self.didEnterRegion(forRegion: region)
+            } else {
+                self.didExitRegion(forRegion: region)
+            }
+        }
+    }
+    
+    private func didEnterRegion(forRegion region: CLRegion) {
+        print("didEnterRegion")
+    }
+    
+    private func didExitRegion(forRegion region: CLRegion) {
+        print("didExitRegion")
+    }
 }
