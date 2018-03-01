@@ -53,6 +53,7 @@ class FirebaseRealtimeDatabaseObserve {
                     self.userCoordinatesObserver(userID: observedUserID)
                     self.userGeofencingObserver(userID: userID)
                     self.observingUserGeotificationObserver(userID: userID, observedUserID: observedUserID)
+                    self.geofenceNotificationObserver(userID: userID)
                     
                     observedUsersListByCurrentUser.append(MonitoringUser(userID: observedUserID, latitude: fullUsersList[index].latitude, longitude: fullUsersList[index].longitude))
                     NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
@@ -135,6 +136,21 @@ class FirebaseRealtimeDatabaseObserve {
             
             if let topVC = UIApplication.topViewController() {
                 geofencing.startMonitoring(controller: topVC, geotification: geotification)
+            }
+        })
+    }
+    
+    func geofenceNotificationObserver(userID: String) {
+        let geofenceNotificationDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("geofenceNotification")
+        
+        geofenceNotificationDB.observe(.childAdded, with: { (snapshot) -> Void in
+            let geofenceNotificationData = snapshot.value as! NSDictionary
+            
+            let observedUserID = geofenceNotificationData["observedUserID"] as! String
+            let messages = geofenceNotificationData["messages"] as! String
+            
+            if let topVC = UIApplication.topViewController() {
+                showAlert(controller: topVC, withTitle: observedUserID, message: messages)
             }
         })
     }

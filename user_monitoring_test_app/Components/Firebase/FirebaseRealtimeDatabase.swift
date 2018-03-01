@@ -110,10 +110,10 @@ class FirebaseRealtimeDatabase {
         geotificationsUserDB.observeSingleEvent(of: .value) { (snapshot) in
             let geotificationData = snapshot.value as! NSDictionary
             let preparedGeotificationData = firebaseHelper.prepareGeotificationData(geotificationData: geotificationData)
-            
-            let geofenceNotificationDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("geofenceNotification")
             let observedUserID = preparedGeotificationData.observedUserID
-            let messages = "User \(observedUserID): \(preparedGeotificationData.eventType.rawValue) Radius \(preparedGeotificationData.radius) m"
+            
+            let geofenceNotificationDB = Database.database().reference().child("users").child(getValidUserID(userID: observedUserID)).child("geofenceNotification")
+            let messages = "\(preparedGeotificationData.eventType.rawValue) Radius \(preparedGeotificationData.radius) m"
             
             let geofenceNotification = ["observedUserID": observedUserID, "messages": messages]
 
