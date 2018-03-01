@@ -70,9 +70,11 @@ class Geofencing {
     
     private func didEnterRegion(forRegion region: CLRegion) {
         print("didEnterRegion")
+        firebaseDatabase.addGeofenceNotificationAboutObservingUser(userID: currentUser, identifier: region.identifier)
     }
     
     private func didExitRegion(forRegion region: CLRegion) {
         print("didExitRegion")
+        firebaseDatabase.addGeofenceNotificationAboutObservingUser(userID: currentUser, identifier: region.identifier)
     }
 }

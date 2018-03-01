@@ -104,4 +104,21 @@ class FirebaseRealtimeDatabase {
             }
         }
     }
+    
+    func addGeofenceNotificationAboutObservingUser(userID: String, identifier: String) {
+        let geotificationsUserDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("geotifications").child(identifier)
+        geotificationsUserDB.observeSingleEvent(of: .value) { (snapshot) in
+            let geotificationData = snapshot.value as! NSDictionary
+            let preparedGeotificationData = firebaseHelper.prepareGeotificationData(geotificationData: geotificationData)
+            
+            let geofenceNotificationDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("geofenceNotification")
+            let geofenceNotification = ["observedUserID": preparedGeotificationData.observedUserID, "note": preparedGeotificationData.note]
+
+            geofenceNotificationDB.childByAutoId().setValue(geofenceNotification) { (error, ref) in
+                if error != nil {
+                    print(error!)
+                }
+            }
+        }
+    }
 }

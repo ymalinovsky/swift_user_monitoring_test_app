@@ -17,6 +17,7 @@ struct App {
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+let firebaseHelper = FirebaseHelper()
 let firebaseAuth = FirebaseAuthentication()
 let firebaseDatabase = FirebaseRealtimeDatabase()
 let firebaseObserve = FirebaseRealtimeDatabaseObserve()
@@ -63,7 +64,6 @@ extension AppDelegate: CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             print("Location status is OK when app in use.")
         }
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

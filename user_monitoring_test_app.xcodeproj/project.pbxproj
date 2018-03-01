@@ -40,6 +40,7 @@
 		9E86B96F20445E8A00E0EA8B /* AddGeotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E86B96E20445E8A00E0EA8B /* AddGeotificationViewController.swift */; };
 		9E86B97220446B8700E0EA8B /* AddGeotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E86B97120446B8700E0EA8B /* AddGeotification.swift */; };
 		9EA0285C203EE7DD00308FC9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0285B203EE7DD00308FC9 /* Menu.swift */; };
+		9EA1F88420482339007E12FB /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1F88320482339007E12FB /* FirebaseHelper.swift */; };
 		9EC25AB52046F46700859D91 /* Geofencing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC25AB42046F46700859D91 /* Geofencing.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		9E86B96E20445E8A00E0EA8B /* AddGeotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeotificationViewController.swift; sourceTree = "<group>"; };
 		9E86B97120446B8700E0EA8B /* AddGeotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeotification.swift; sourceTree = "<group>"; };
 		9EA0285B203EE7DD00308FC9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		9EA1F88320482339007E12FB /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		9EC25AB42046F46700859D91 /* Geofencing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geofencing.swift; sourceTree = "<group>"; };
 		A0FF26F2466BA3C6C598BE7E /* Pods_user_monitoring_test_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_user_monitoring_test_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09863B4D5DE145F434368C9 /* Pods-user_monitoring_test_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-user_monitoring_test_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-user_monitoring_test_appTests/Pods-user_monitoring_test_appTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				9E4407FD2035E47C0040D3E2 /* FirebaseRealtimeDatabase.swift */,
 				9E4408032035FA370040D3E2 /* FirebaseRealtimeDatabaseObserve.swift */,
 				9E51A6AC203F10CD00B00CE4 /* FirebaseStorage.swift */,
+				9EA1F88320482339007E12FB /* FirebaseHelper.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				9E7D3D152035BC55006102C6 /* App.swift in Sources */,
 				9E51A6B0203F3D6B00B00CE4 /* GoogleMaps.swift in Sources */,
 				9E7D3D132035AE11006102C6 /* MonitoringUser.swift in Sources */,
+				9EA1F88420482339007E12FB /* FirebaseHelper.swift in Sources */,
 				9E86B96F20445E8A00E0EA8B /* AddGeotificationViewController.swift in Sources */,
 				9E7D3D102035AC03006102C6 /* UserObservedListViewController.swift in Sources */,
 				9E86B97220446B8700E0EA8B /* AddGeotification.swift in Sources */,

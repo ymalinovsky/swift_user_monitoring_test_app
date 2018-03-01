@@ -107,13 +107,9 @@ class FirebaseRealtimeDatabaseObserve {
                 let geotificationData = snapshot.value as! NSDictionary
                 
                 let identifier = snapshot.key
-                let latitude = CLLocationDegrees(geotificationData["latitude"] as! String)!
-                let longitude = CLLocationDegrees(geotificationData["longitude"] as! String)!
-                let radius = Double(geotificationData["radius"] as! String)!
-                let note = geotificationData["note"] as! String
-                let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
+                let preparedGeotificationData = firebaseHelper.prepareGeotificationData(geotificationData: geotificationData)
                 
-                let geotification = Geotification(latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
+                let geotification = Geotification(latitude: preparedGeotificationData.latitude, longitude: preparedGeotificationData.longitude, radius: preparedGeotificationData.radius, identifier: identifier, note: preparedGeotificationData.note, eventType: preparedGeotificationData.eventType)
                 
                 if observedUsersListByCurrentUser[userIndex].geotifications != nil {
                     observedUsersListByCurrentUser[userIndex].geotifications!.append(geotification)
@@ -133,13 +129,9 @@ class FirebaseRealtimeDatabaseObserve {
             let geotificationData = snapshot.value as! NSDictionary
             
             let identifier = snapshot.key
-            let latitude = CLLocationDegrees(geotificationData["latitude"] as! String)!
-            let longitude = CLLocationDegrees(geotificationData["longitude"] as! String)!
-            let radius = Double(geotificationData["radius"] as! String)!
-            let note = geotificationData["note"] as! String
-            let eventType: EventType = (geotificationData["eventType"] as! String == "onEntry") ? .onEntry : .onExit
+            let preparedGeotificationData = firebaseHelper.prepareGeotificationData(geotificationData: geotificationData)
             
-            let geotification = Geotification(latitude: latitude, longitude: longitude, radius: radius, identifier: identifier, note: note, eventType: eventType)
+            let geotification = Geotification(latitude: preparedGeotificationData.latitude, longitude: preparedGeotificationData.longitude, radius: preparedGeotificationData.radius, identifier: identifier, note: preparedGeotificationData.note, eventType: preparedGeotificationData.eventType)
             
             if let topVC = UIApplication.topViewController() {
                 geofencing.startMonitoring(controller: topVC, geotification: geotification)
