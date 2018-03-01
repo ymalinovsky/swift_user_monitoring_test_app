@@ -35,6 +35,8 @@ class FirebaseRealtimeDatabaseObserve {
                 
                 if userID == currentUser {
                     self.observedUserObserver(userID: userID)
+                    self.userGeofencingObserver(userID: userID)
+                    self.geofenceNotificationObserver(userID: userID)
                 }
             }
         })
@@ -51,9 +53,8 @@ class FirebaseRealtimeDatabaseObserve {
             if observedUserID != currentUser {
                 if let index = fullUsersList.index(where: { $0.userID == observedUserID}) {
                     self.userCoordinatesObserver(userID: observedUserID)
-                    self.userGeofencingObserver(userID: userID)
                     self.observingUserGeotificationObserver(userID: userID, observedUserID: observedUserID)
-                    self.geofenceNotificationObserver(userID: userID)
+                    
                     
                     observedUsersListByCurrentUser.append(MonitoringUser(userID: observedUserID, latitude: fullUsersList[index].latitude, longitude: fullUsersList[index].longitude))
                     NotificationCenter.default.post(name: .userObservedListVCTableViewMustBeReload, object: nil, userInfo: nil)
