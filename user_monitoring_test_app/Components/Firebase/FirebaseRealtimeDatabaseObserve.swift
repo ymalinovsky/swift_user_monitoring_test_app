@@ -149,6 +149,8 @@ class FirebaseRealtimeDatabaseObserve {
             let observedUserID = geofenceNotificationData["observedUserID"] as! String
             let messages = geofenceNotificationData["messages"] as! String
             
+            geofenceNotificationDB.child(snapshot.key).removeValue()
+            
             if let topVC = UIApplication.topViewController() {
                 showAlert(controller: topVC, withTitle: observedUserID, message: messages)
             }
