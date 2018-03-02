@@ -17,11 +17,11 @@ struct App {
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-let firebaseHelper = FirebaseHelper()
-let firebaseAuth = FirebaseAuthentication()
-let firebaseDatabase = FirebaseRealtimeDatabase()
-let firebaseObserve = FirebaseRealtimeDatabaseObserve()
-let firebaseStorage = FirebaseStorage()
+let firebaseHelper = FirebaseHelper.singleton
+let firebaseAuth = FirebaseAuthentication.singleton
+let firebaseDatabase = FirebaseRealtimeDatabase.singleton
+let firebaseObserve = FirebaseRealtimeDatabaseObserve.singleton
+let firebaseStorage = FirebaseStorage.singleton
 
 var fullUsersList = [MonitoringUser]()
 var observedUsersListByCurrentUser = [MonitoringUser]()

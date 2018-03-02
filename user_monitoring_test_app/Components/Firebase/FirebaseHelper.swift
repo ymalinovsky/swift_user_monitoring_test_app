@@ -10,6 +10,9 @@ import Foundation
 import CoreLocation
 
 class FirebaseHelper {
+    
+    static let singleton = FirebaseHelper()
+    
     func prepareGeotificationData(geotificationData: NSDictionary) -> (observedUserID: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: Double, note: String, eventType: EventType) {
         let observedUserID = geotificationData["observedUserID"] as! String
         let latitude = CLLocationDegrees(geotificationData["latitude"] as! String)!

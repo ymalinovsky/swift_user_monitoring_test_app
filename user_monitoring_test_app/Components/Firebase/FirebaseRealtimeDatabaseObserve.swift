@@ -11,6 +11,9 @@ import Firebase
 import CoreLocation
 
 class FirebaseRealtimeDatabaseObserve {
+    
+    static let singleton = FirebaseRealtimeDatabaseObserve()
+    
     func newUserObserver() {
         let userDB = Database.database().reference().child("users")
         userDB.observe(.childAdded, with: { (snapshot) -> Void in

@@ -11,6 +11,9 @@ import Firebase
 import CoreLocation
 
 class FirebaseRealtimeDatabase {
+    
+    static let singleton = FirebaseRealtimeDatabase()
+    
     func addNewUser(userID: String) {
         let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID))
         

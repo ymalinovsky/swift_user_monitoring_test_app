@@ -10,6 +10,9 @@ import Foundation
 import Firebase
 
 class FirebaseAuthentication {
+    
+    static let singleton = FirebaseAuthentication()
+    
     func emailRegistration(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {

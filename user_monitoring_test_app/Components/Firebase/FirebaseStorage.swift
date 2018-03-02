@@ -10,6 +10,9 @@ import Foundation
 import Firebase
 
 class FirebaseStorage {
+    
+    static let singleton = FirebaseStorage()
+    
     func uploadProfileImage(filePath: URL, userID: String) {
         let storageRef = Storage.storage().reference()
         
