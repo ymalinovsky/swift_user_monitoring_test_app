@@ -49,6 +49,19 @@ extension AppDelegate: CLLocationManagerDelegate {
         if let location = locations.last {
             firebaseDatabase.saveUserLocations(userID: currentUser, location: location)
         }
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        print("\(hour):\(minutes):\(seconds) - locations: \(locations.count)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
+        if let error = error {
+            print(error)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

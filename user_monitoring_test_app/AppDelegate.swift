@@ -15,6 +15,9 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let locationManagerDeferInterval: TimeInterval = 10
+    let locationManagerDeferDistance: CLLocationDistance = 10
     var locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -30,7 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.requestAlwaysAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
+        
+        if CLLocationManager.deferredLocationUpdatesAvailable() {
+            locationManager.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: CLTimeIntervalMax)
+        } else {
+            print("device not supporte deferredLocationUpdates")
+        }
         
         return true
     }
