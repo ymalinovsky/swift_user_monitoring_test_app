@@ -16,14 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let locationManagerDeferInterval: TimeInterval = 10
-    let locationManagerDeferDistance: CLLocationDistance = 10
     var locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyCeygKy2GbL_knck_jdeaYAD4AOmC1mdhQ")
         
         FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         
         firebaseObserve.newUserObserver()
         
