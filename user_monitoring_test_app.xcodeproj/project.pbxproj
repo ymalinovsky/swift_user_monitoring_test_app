@@ -13,6 +13,7 @@
 		9E09C82B203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C82A203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift */; };
 		9E09C82F203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */; };
 		9E09C834203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09C833203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift */; };
+		9E1A574B2056CBAE00CD9228 /* FirebaseCloudMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1A574A2056CBAE00CD9228 /* FirebaseCloudMessaging.swift */; };
 		9E419EB82055C52B008CBAB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E419EB72055C52A008CBAB8 /* GoogleService-Info.plist */; };
 		9E41B9DA203D9F2F0035D9BF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E41B9D9203D9F2F0035D9BF /* MenuViewController.swift */; };
 		9E41B9DD203DA85B0035D9BF /* HamburgerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E41B9DC203DA85B0035D9BF /* HamburgerMenu.swift */; };
@@ -72,6 +73,7 @@
 		9E09C82A203AE54000B45CF1 /* AssignUserObserveToUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignUserObserveToUserViewController.swift; sourceTree = "<group>"; };
 		9E09C82E203B108B00B45CF1 /* WhoObservingCurrentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoObservingCurrentUserViewController.swift; sourceTree = "<group>"; };
 		9E09C833203B2B6D00B45CF1 /* AssignUserObserveToUserQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignUserObserveToUserQueue.swift; sourceTree = "<group>"; };
+		9E1A574A2056CBAE00CD9228 /* FirebaseCloudMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudMessaging.swift; sourceTree = "<group>"; };
 		9E419EB62055B06B008CBAB8 /* user_monitoring_test_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = user_monitoring_test_app.entitlements; sourceTree = "<group>"; };
 		9E419EB72055C52A008CBAB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E41B9D9203D9F2F0035D9BF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				9E4408032035FA370040D3E2 /* FirebaseRealtimeDatabaseObserve.swift */,
 				9E51A6AC203F10CD00B00CE4 /* FirebaseStorage.swift */,
 				9EA1F88320482339007E12FB /* FirebaseHelper.swift */,
+				9E1A574A2056CBAE00CD9228 /* FirebaseCloudMessaging.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 			files = (
 				9E4407FC2035CDD60040D3E2 /* LoginViewController.swift in Sources */,
 				9E4408022035F6B70040D3E2 /* AddUserToObserveViewController.swift in Sources */,
+				9E1A574B2056CBAE00CD9228 /* FirebaseCloudMessaging.swift in Sources */,
 				9E41B9DD203DA85B0035D9BF /* HamburgerMenu.swift in Sources */,
 				9E7D3D192035BF86006102C6 /* FirebaseAuthentication.swift in Sources */,
 				9E4408042035FA370040D3E2 /* FirebaseRealtimeDatabaseObserve.swift in Sources */,
