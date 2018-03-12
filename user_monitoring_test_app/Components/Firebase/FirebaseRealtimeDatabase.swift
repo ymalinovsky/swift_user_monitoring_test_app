@@ -127,4 +127,16 @@ class FirebaseRealtimeDatabase {
             }
         }
     }
+    
+    func setFCMToken(userID: String, fcmToken: String) {
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: userID)).child("fcm")
+        
+        let fcmToken = ["fcmToken": fcmToken]
+        
+        userDB.setValue(fcmToken) { (error, ref) in
+            if error != nil {
+                print(error!)
+            }
+        }
+    }
 }

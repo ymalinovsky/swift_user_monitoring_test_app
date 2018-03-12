@@ -19,27 +19,29 @@ class FirebaseRealtimeDatabaseObserve {
         userDB.observe(.childAdded, with: { (snapshot) -> Void in
             let userData = snapshot.value as! NSDictionary
             
-            let userID = userData["id"] as! String
-            
-            var latitude = String()
-            var longitude = String()
-            if userData["coordinates"] != nil {
-                let coordinates = userData["coordinates"] as! NSDictionary
-                latitude = String(describing: coordinates["latitude"]!)
-                longitude = String(describing: coordinates["longitude"]!)
-            }
-            
-            if !fullUsersList.contains(where: { $0.userID == userID }) {
-                if latitude.isEmpty && longitude.isEmpty {
-                    fullUsersList.append(MonitoringUser(userID: userID, latitude: nil, longitude: nil))
-                } else {
-                    fullUsersList.append(MonitoringUser(userID: userID, latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude)))
+            if userData["id"] != nil {
+                let userID = userData["id"] as! String
+                
+                var latitude = String()
+                var longitude = String()
+                if userData["coordinates"] != nil {
+                    let coordinates = userData["coordinates"] as! NSDictionary
+                    latitude = String(describing: coordinates["latitude"]!)
+                    longitude = String(describing: coordinates["longitude"]!)
                 }
                 
-                if userID == currentUser {
-                    self.observedUserObserver(userID: userID)
-                    self.userGeofencingObserver(userID: userID)
-                    self.geofenceNotificationObserver(userID: userID)
+                if !fullUsersList.contains(where: { $0.userID == userID }) {
+                    if latitude.isEmpty && longitude.isEmpty {
+                        fullUsersList.append(MonitoringUser(userID: userID, latitude: nil, longitude: nil))
+                    } else {
+                        fullUsersList.append(MonitoringUser(userID: userID, latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude)))
+                    }
+                    
+                    if userID == currentUser {
+                        self.observedUserObserver(userID: userID)
+                        self.userGeofencingObserver(userID: userID)
+                        self.geofenceNotificationObserver(userID: userID)
+                    }
                 }
             }
         })

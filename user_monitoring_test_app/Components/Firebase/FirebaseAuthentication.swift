@@ -25,6 +25,11 @@ class FirebaseAuthentication {
                 UserDefaults.standard.set(password, forKey: App.currentUserPasswordKeyForUserDefaults)
                 
                 currentUser = email
+                
+                if let fcmToken = Messaging.messaging().fcmToken {
+                    firebaseDatabase.setFCMToken(userID: currentUser, fcmToken: fcmToken)
+                }
+
                 firebaseObserve.checkNewUserObserver(userID: currentUser)
                 
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)
@@ -44,6 +49,11 @@ class FirebaseAuthentication {
                 UserDefaults.standard.set(password, forKey: App.currentUserPasswordKeyForUserDefaults)
                 
                 currentUser = email
+                
+                if let fcmToken = Messaging.messaging().fcmToken {
+                    firebaseDatabase.setFCMToken(userID: currentUser, fcmToken: fcmToken)
+                }
+                
                 firebaseObserve.checkNewUserObserver(userID: currentUser)
                 
                 NotificationCenter.default.post(name: .loginSuccess, object: nil, userInfo: nil)

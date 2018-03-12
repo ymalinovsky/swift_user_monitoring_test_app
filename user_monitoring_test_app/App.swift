@@ -88,9 +88,11 @@ extension AppDelegate: CLLocationManagerDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        let token = Messaging.messaging().fcmToken
-        print("FCM token: \(token ?? "")")
-        print("Firebase registration token: \(fcmToken)")
+        print("FCM token: \(fcmToken)")
+        
+        if let currentUser = UserDefaults.standard.string(forKey: App.currentUserKeyForUserDefaults) {
+            firebaseDatabase.setFCMToken(userID: currentUser, fcmToken: fcmToken)
+        }
     }
 }
 
