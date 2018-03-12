@@ -125,6 +125,8 @@ class FirebaseRealtimeDatabase {
                     print(error!)
                 }
             }
+            
+            self.getFCMTokenAndSendNotification(observedUserID: observedUserID, title: userID, body: messages)
         }
     }
     
@@ -137,6 +139,17 @@ class FirebaseRealtimeDatabase {
             if error != nil {
                 print(error!)
             }
+        }
+    }
+    
+    func getFCMTokenAndSendNotification(observedUserID: String, title: String, body: String) {
+        let userDB = Database.database().reference().child("users").child(getValidUserID(userID: observedUserID)).child("fcm")
+        userDB.observeSingleEvent(of: .value) { (snapshot) in
+            let fcmData = snapshot.value as! NSDictionary
+            
+            let fcmToken = fcmData["fcmToken"] as! String
+            
+            firebaseMessaging.sendUserNotification(fcmToken: fcmToken, title: title, body: body)
         }
     }
 }

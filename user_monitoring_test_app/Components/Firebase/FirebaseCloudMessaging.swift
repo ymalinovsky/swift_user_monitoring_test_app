@@ -21,24 +21,25 @@ class FirebaseCloudMessaging {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")  // the request is JSON
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        let authorizationBearerSchema = "key=" + fcmToken
+        let authorizationBearerSchema = "key=AAAAtQLrBSo:APA91bHn2eMhTEA0fova05holi5IGWvBPsdg4hKrPpW4_YSN3VoEHKvdKu3H3POEeNB_UqT--PiOr1UiGrQLHS9OQgdvDHVqrqjQyJTA_M5_Yd8BANum6iAb-v5L0QXp7TK6UNO1_3AQ"
         request.setValue(authorizationBearerSchema, forHTTPHeaderField: "Authorization")
         
         return request
     }
     
-    func sendUserNotification(fcmToken: String) {
+    func sendUserNotification(fcmToken: String, title: String, body: String) {
         var request = self.getFCMURLRequest(url: self.sendURL, fcmToken: fcmToken)
         
         let notificationDataArray = [
-            "\"title\": \"ATATA!!!\"",
-            "\"body\": \"QWE\""
+            "\"title\": \"\(title)\"",
+            "\"body\": \"\(body)\""
         ]
         let notificationDataString = "{ " + notificationDataArray.joined(separator: ", ") + " }"
         
         let notificationArray = [
             "\"notification\": \(notificationDataString)",
-            "\"to\": \(fcmToken)"
+            "\"priority\": \"high\"",
+            "\"to\": \"\(fcmToken)\""
         ]
         let notificationString = "{ " + notificationArray.joined(separator: ", ") + " }"
         

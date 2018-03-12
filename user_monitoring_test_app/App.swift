@@ -23,6 +23,7 @@ let firebaseAuth = FirebaseAuthentication.singleton
 let firebaseDatabase = FirebaseRealtimeDatabase.singleton
 let firebaseObserve = FirebaseRealtimeDatabaseObserve.singleton
 let firebaseStorage = FirebaseStorage.singleton
+let firebaseMessaging = FirebaseCloudMessaging.singleton
 
 var fullUsersList = [MonitoringUser]()
 var observedUsersListByCurrentUser = [MonitoringUser]()
